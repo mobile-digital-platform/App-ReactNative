@@ -3,7 +3,8 @@ import {Platform,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import Tabs from '../tabs';
+import Tabs			from '../../../containers/main_tabs';
+import Promo_List	from '../../../containers/promo/promo_list';
 
 const styles = StyleSheet.create({
 	container: {
@@ -27,6 +28,7 @@ export default class Onboarding extends Component {
 		return (
 			<View style={styles.container}>
 				<Tabs/>
+				<Promo_List my={true}/>
 			</View>
 		);
 	}
