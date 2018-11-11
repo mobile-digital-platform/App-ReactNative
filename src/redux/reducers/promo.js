@@ -17,23 +17,35 @@ export const FETCH_DATA_REQUEST	= config.name+'/'+module+'FETCH_DATA_REQUEST';
 export const FETCH_DATA_SUCCESS	= config.name+'/'+module+'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_ERROR	= config.name+'/'+module+'FETCH_DATA_ERROR';
 
+/*
+Потом надо будет разделить на загрузку следующих и загрузку новых
+*/
+
 // Редуктор
 export default function reducer(st = ReducerRecord(),action) {
 	const {type,payload,error} = action;
 
 	if(type == FETCH_DATA_REQUEST) {
-		st.loading = true;
+		return {...st,loading:true};
 
 	} else if(type == FETCH_DATA_SUCCESS) {
-		st.loading = false;
-		st.loaded = true;
-		st.data = payload.items;
-		st.error = null;
+		let data = [...st.data,...payload];
+		data.forEach((e,i) => e.id = i);
+		return {
+			...st,
+			loading: false,
+			loaded: true,
+			data,
+			error: null,
+		};
 
 	} else if(type == FETCH_DATA_ERROR) {
-		st.loading = false;
+		return {
+			...st,
+			loading: false,
+			error,
+		};
 		// st.loaded = false;
-		st.error = error;
 	}
 
 	return {...st};
@@ -50,6 +62,7 @@ export function fetch_data() {
 // Сага
 export const fetch_data_saga = function*({payload}) {
 	try {
+		/*
 		let res = yield fetch('http://comtrud.ru/api/v2/work/recent',{
 			method: 'POST',
 			mode: 'no-cors',
@@ -65,15 +78,18 @@ export const fetch_data_saga = function*({payload}) {
 		} else {
 			throw("Сервер полоникса не отвечает");
 		}
+		*/
 
-		if(data.response) {
-			yield put({
-				type: FETCH_DATA_SUCCESS,
-				payload: data.response,
-			});
-		} else if(data.error) {
-			throw(data.error);
-		}
+		let data = [];
+		for(let i=0; i<10; i++) data.push({
+			title: 'Акция '+Math.ceil(Math.random()*10*(i+1)),
+			ending: Math.ceil(Math.random()*20),
+		});
+
+		yield put({
+			type: FETCH_DATA_SUCCESS,
+			payload: data,
+		});
 	} catch (error) {
 		console.log('error',error);
 		yield put({

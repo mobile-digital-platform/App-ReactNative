@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 export default class List extends Component {
 
-	key_extractor = item => item.id;
+	key_extractor = item => ''+item.id;
 	renderItem = ({item}) => (<Item data={item} />);
 	renderFooter = () => {
 		const {loading,loaded} = this.props;
@@ -30,21 +30,23 @@ export default class List extends Component {
 	};
 
 	render() {
-		console.log("Component",this.props);
 		let {data} = this.props;
+		console.log(data);
 
 		return (
 			<View style={styles.container}>
 				<FlatList
 					data={data}
-					extraData={this.props}
-					// keyExtractor={this.key_extractor}
 					renderItem={this.renderItem}
-					onEndReached={this.props.load_new}
-					onEndReachedThreshold={0.5}
+					ItemSeparatorComponent={Separator}
 					ListFooterComponent={this.renderFooter}
 					// ListHeaderComponent={Separator}
-					ItemSeparatorComponent={Separator}
+					extraData={this.props}
+					keyExtractor={this.key_extractor}
+					onEndReached={this.props.load_next}
+					onEndReachedThreshold={0.5}
+					onRefresh={this.props.load_new}
+					refreshing={this.props.loading}
 				/>
 			</View>
 		);

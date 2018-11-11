@@ -13,6 +13,9 @@ export default class X extends Component {
 	load_new = () => {
 		this.props.fetch_data();
 	}
+	load_next = () => {
+		this.props.fetch_data();
+	}
 
 	render() {
 		console.log("Component",this.props);
@@ -22,6 +25,7 @@ export default class X extends Component {
 				{...this.props}
 				state={this.state}
 				load_new={this.load_new}
+				load_next={this.load_next}
 			/>
 		);
 	}
