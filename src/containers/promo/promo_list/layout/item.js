@@ -4,12 +4,14 @@ import {withNavigation} from 'react-navigation';
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center',
+		justifyContent: 'center', alignItems: 'center',
+		minHeight: 100,
 		marginHorizontal: 10, padding: 10,
 		// backgroundColor: '#eee',
 	},
 	title: {
-		fontSize: 20,
+		marginBottom: 5,
+		fontSize: 24,
 	},
 	ending: {
 		fontSize: 14,
