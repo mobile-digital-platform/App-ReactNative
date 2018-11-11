@@ -7,20 +7,16 @@ const styles = StyleSheet.create({
 	container: {
 		padding: 30,
 		color: '#999',
-		fontSize: 20, fontFamily: 'Roboto-Light',
+		fontSize: 20, // fontFamily: 'Roboto-Light',
 		textAlign: 'center',
 	},
 });
 
 export default class extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			value: new Animated.Value(0),
-			deg: '0deg',
-		}
-	}
+	state = {
+		value: new Animated.Value(0),
+		deg: '0deg',
+	};
 
 	componentDidMount() {
 		Animated.loop(Animated.timing(this.state.value,{

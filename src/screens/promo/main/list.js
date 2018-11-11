@@ -9,7 +9,7 @@ import Promo_List	from '../../../containers/promo/promo_list';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 10,
+		paddingTop: 10,
 		backgroundColor: '#fff',
 	},
 });
