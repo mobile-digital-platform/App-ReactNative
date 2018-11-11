@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default class Onboarding extends Component {
+export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Акции',
 		headerRight: (

@@ -1,13 +1,16 @@
-import React,{Component} from 'react';
-import {StatusBar} from 'react-native';
-import {createStackNavigator} from 'react-navigation';
+import React					from 'react';
+import {StatusBar}				from 'react-native';
+import {createStackNavigator}	from 'react-navigation';
+import {Provider}				from 'react-redux';
 
-import OnboardingScreen		from './screens/onboarding';
-import PromoListScreen		from './screens/promo/main/list';
-import PromoViewScreen		from './screens/promo/main/view';
-import PromoMyListScreen	from './screens/promo/my/list';
-import PromoMyViewScreen	from './screens/promo/my/view';
-import SettingsScreen		from './screens/settings/main';
+import OnboardingScreen			from './screens/onboarding';
+import PromoListScreen			from './screens/promo/main/list';
+import PromoViewScreen			from './screens/promo/main/view';
+import PromoMyListScreen		from './screens/promo/my/list';
+import PromoMyViewScreen		from './screens/promo/my/view';
+import SettingsScreen			from './screens/settings/main';
+
+import store					from './redux';
 
 StatusBar.setBarStyle('dark-content',true);
 
@@ -48,4 +51,4 @@ const Root = createStackNavigator(
 	}
 );
 
-export default () => <Root/>
+export default () => <Provider store={store}><Root/></Provider>
