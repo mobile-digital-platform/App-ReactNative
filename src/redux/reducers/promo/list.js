@@ -1,6 +1,6 @@
 import {all,call,put,select,takeEvery,takeLatest} from 'redux-saga/effects';
 
-import config from '../../config';
+import config from '../../../config';
 
 export const ReducerRecord = () => ({
 	data: [],
@@ -13,23 +13,21 @@ export const ReducerRecord = () => ({
 // Постоянные
 export const module = 'promo_list';
 
-export const FETCH_DATA_REQUEST	= config.name+'/'+module+'FETCH_DATA_REQUEST';
-export const FETCH_DATA_SUCCESS	= config.name+'/'+module+'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_ERROR	= config.name+'/'+module+'FETCH_DATA_ERROR';
-
-/*
-Потом надо будет разделить на загрузку следующих и загрузку новых
-*/
+export const REQUEST		= config.name+'/'+module+'/REQUEST';
+export const SUCCESS		= config.name+'/'+module+'/SUCCESS';
+export const ERROR			= config.name+'/'+module+'/ERROR';
 
 // Редуктор
 export default function reducer(st = ReducerRecord(),action) {
 	const {type,payload,error} = action;
 
-	if(type == FETCH_DATA_REQUEST) {
+	if(type == REQUEST) {
 		return {...st,loading:true};
 
-	} else if(type == FETCH_DATA_SUCCESS) {
-		let data = [...st.data,...payload];
+	} else if(type == SUCCESS) {
+		let data = [];
+		if(payload.next)		data = [...st.data,...payload.data];
+		else if(payload.new)	data = [...payload.data,...st.data];
 		data.forEach((e,i) => e.id = i);
 		return {
 			...st,
@@ -39,7 +37,7 @@ export default function reducer(st = ReducerRecord(),action) {
 			error: null,
 		};
 
-	} else if(type == FETCH_DATA_ERROR) {
+	} else if(type == ERROR) {
 		return {
 			...st,
 			loading: false,
@@ -52,10 +50,10 @@ export default function reducer(st = ReducerRecord(),action) {
 }
 
 // Действие
-export function fetch_data() {
+export function list_data(payload) {
 	return {
-		type: FETCH_DATA_REQUEST,
-		payload: {},
+		type: REQUEST,
+		payload,
 	};
 }
 
@@ -87,20 +85,23 @@ export const fetch_data_saga = function*({payload}) {
 		});
 
 		yield put({
-			type: FETCH_DATA_SUCCESS,
-			payload: data,
+			type: SUCCESS,
+			payload: {
+				...payload,
+				data,
+			},
 		});
 	} catch (error) {
 		console.log('error',error);
 		yield put({
-			type: FETCH_DATA_ERROR,
+			type: ERROR,
 			error,
 		});
 	}
 };
 
 export const saga = function*() {
-  yield all([
-    takeEvery(FETCH_DATA_REQUEST,fetch_data_saga),
-  ]);
+	yield all([
+		takeEvery(REQUEST,fetch_data_saga),
+	]);
 };

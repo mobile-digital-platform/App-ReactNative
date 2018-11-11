@@ -3,18 +3,18 @@ import {StyleSheet,ScrollView,TouchableOpacity,View,Text} from 'react-native';
 
 import Layout from './layout/list';
 
-export default class X extends Component {
+export default class PromoListComponent extends Component {
 	state = {};
 
 	componentDidMount() {
-		this.load_new();
+		this.load_next();
 	}
 
 	load_new = () => {
-		this.props.fetch_data();
+		this.props.list_data({new:true});
 	}
 	load_next = () => {
-		this.props.fetch_data();
+		this.props.list_data({next:true});
 	}
 
 	render() {

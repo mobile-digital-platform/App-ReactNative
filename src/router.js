@@ -44,7 +44,7 @@ const Root = createStackNavigator(
 				// backgroundColor: '#ddd',
 			},
 			headerTitleStyle: {
-				// color: '#fff',
+				color: '#000',
 				fontSize: 28,
 			},
 		},
