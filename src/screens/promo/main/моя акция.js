@@ -7,19 +7,21 @@ import Input from './comp/Input';
 import Button1 from './comp/Button1';
 import Button2 from './comp/Button2';
 import Select from './comp/Select';
+import IconText from './comp/IconText';
+import Banner from './comp/Banner';
 
 const styles = StyleSheet.create({
 	container1: {
 		backgroundColor: 'white',
-		paddingTop: 20,
+		paddingTop: 40,
 		paddingBottom: 20,
 		paddingLeft: 20,
 		paddingRight: 20,
 	},
 	container2: {
 		backgroundColor: 'white',
-		paddingTop: 20,
-		paddingBottom: 20,
+		paddingTop: 15,
+		paddingBottom: 25,
 		paddingLeft: 40,
 		paddingRight: 40,
 		borderTopColor: '#ccc', 
@@ -28,18 +30,16 @@ const styles = StyleSheet.create({
 	title: {
 		color: '#b3b3b3',
 		fontSize: 15,
-		paddingLeft: 20,
-		paddingRight: 20,
-		paddingBottom: 10
+		marginBottom: 10,
 	},
 	text: {
 		color: '#494949',
 		fontSize: 15,
 		lineHeight: 20,
-		paddingLeft: 20,
-		paddingRight: 20,
-		paddingBottom: 40,
+		marginBottom: 20,
+		marginRight: 'auto',
 	},
+
 });
 
 export default class PromoView extends Component {
@@ -54,19 +54,21 @@ export default class PromoView extends Component {
 
 	render() {
 		return (
+				<ScrollView>
 				<View>
+					<Banner />
 					<View style={styles.container1}>
-						<Input placeholder="Новый пароль" style={{ marginBottom: 15 }}/>					
-						<Text style={[styles.text]}>На ваш телефон отправлено SMS-сообщение с кодом подтверждения. Введите этот код в поле</Text>
-						<Text style={[styles.title]}>Подтвердите смену текущим паролем</Text>
-						<Input placeholder="Текущий пароль"  style={{ marginBottom: 20 }} />
-						<Button1 value="Сохранить" />
+						<Text style={[styles.text, {textAlign: 'center'}]}>Пока у вас нет ни одной покупки по акции.</Text>
+						<Text style={[styles.text, {textAlign: 'center'}]}>Если вы зарегистрировали карту лояльности магазина, и использовали ее при покупке. данные добавятся автоматически</Text>
+						<Text style={[styles.text, {textAlign: 'center'}]}>Если карты лояльности нет, вы можете вручную добавить кассовый чек, нажав кнопку «добавить».</Text>
 					</View>
 					<View style={styles.container2}>
-						<Text style={[styles.text, {textAlign: 'center', paddingBottom: 20}]}>Я  забыл пароль</Text>
-						<Button2 value="Восстановить пароль"/>
+						<Button1 value="Добавить чек" style={{marginBottom: 25 }}/>
+						<Button2 value="Получить выигрыш" style={{marginBottom: 25 }} />
+						<IconText text="Задать вопрос" icon="comment" />
 					</View>
 				</View>
+				</ScrollView>
 		)
 	}
 }
