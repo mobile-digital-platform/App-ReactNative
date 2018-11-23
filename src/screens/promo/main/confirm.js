@@ -7,19 +7,21 @@ import Input from './comp/Input';
 import Button1 from './comp/Button1';
 import Button2 from './comp/Button2';
 import Select from './comp/Select';
+import text from './comp/text';
+import title from './comp/title';
 
 const styles = StyleSheet.create({
 	container1: {
 		backgroundColor: 'white',
-		paddingTop: 20,
-		paddingBottom: 20,
+		paddingTop: 15,
+		paddingBottom: 15,
 		paddingLeft: 20,
 		paddingRight: 20,
 	},
 	container2: {
 		backgroundColor: 'white',
-		paddingTop: 20,
-		paddingBottom: 20,
+		paddingTop: 15,
+		paddingBottom: 15,
 		paddingLeft: 40,
 		paddingRight: 40,
 		borderTopColor: '#ccc', 
@@ -28,17 +30,12 @@ const styles = StyleSheet.create({
 	title: {
 		color: '#b3b3b3',
 		fontSize: 15,
-		paddingLeft: 20,
-		paddingRight: 20,
-		paddingBottom: 10
+		marginBottom: 10,
 	},
 	text: {
 		color: '#494949',
 		fontSize: 15,
 		lineHeight: 20,
-		paddingLeft: 20,
-		paddingRight: 20,
-		paddingBottom: 40,
 	},
 });
 
@@ -56,15 +53,13 @@ export default class PromoView extends Component {
 		return (
 				<View>
 					<View style={styles.container1}>
-						<Input placeholder="Новый пароль" style={{ marginBottom: 15 }}/>					
-						<Text style={[styles.text]}>На ваш телефон отправлено SMS-сообщение с кодом подтверждения. Введите этот код в поле</Text>
-						<Text style={[styles.title]}>Подтвердите смену текущим паролем</Text>
-						<Input placeholder="Текущий пароль"  style={{ marginBottom: 20 }} />
-						<Button1 value="Сохранить" />
+						<Text style={[styles.text, {textAlign: 'center'}]}>На ваш телефон отправлено SMS-сообщение с кодом подтверждения. Введите этот код в поле</Text>
+						<Input placeholder="Код из SMS" style={{ marginTop: 25, marginBottom: 25 }}/>
+						<Button1 value="Подтвердить" />
 					</View>
 					<View style={styles.container2}>
-						<Text style={[styles.text, {textAlign: 'center', paddingBottom: 20}]}>Я  забыл пароль</Text>
-						<Button2 value="Восстановить пароль"/>
+						<Text style={[styles.text, {textAlign: 'center'}]}>Я не получил SMS-сообщение</Text>
+						<Button2 value="Запросить повторно" style={{ marginTop: 25, marginBottom: 25 }} />
 					</View>
 				</View>
 		)
