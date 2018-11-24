@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
-import {Platform,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
+import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Settings_Button	from '../../../containers/settings_button';
+import Tabs				from '../../../containers/main_tabs';
 
 import Promo_View	from '../../../containers/promo/view';
 
@@ -14,17 +15,27 @@ const styles = StyleSheet.create({
 
 export default class PromoView extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: navigation.getParam('promo',{title:'Акция'}).title,
-		headerRight: (
-			<TouchableOpacity style={{padding:15,paddingRight:0,}} onPress={_ => navigation.push('settings')}>
-				<Icon name="gear" style={{marginRight:10,color:'#000'}} size={40} />
-			</TouchableOpacity>
-		),
+		title: 'Об акции',
+		headerStyle: {
+			height: 70,
+			backgroundColor: '#ee0007',
+		},
+		headerBackTitle: ' ',
+		headerLeftContainerStyle: {
+			padding: 10,
+		},
+		headerTitleStyle: {
+			color: '#fff',
+			fontSize: 22, fontWeight: 'bold',
+			textTransform: 'uppercase',
+		},
+		headerRight: (<Settings_Button navigation={navigation} styles={{color:'#fff'}} />),
 	});
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<StatusBar barStyle="light-content" />
 				<Promo_View/>
 			</View>
 		);

@@ -60,6 +60,18 @@ export const fetch_data_saga = function*({payload}) {
 			title: 'Акция '+Math.ceil(Math.random()*100),
 			ending: Math.ceil(Math.random()*20),
 			description: 'Описание условий акции описание условий акции описание условий акции описание условий акции',
+			retailer: [
+				{
+					id: 1,
+					name: 'Ашан',
+					link: 'ссылка на промо сайт',
+				},
+				{
+					id: 2,
+					name: 'Пятерочка',
+					link: 'ссылка на промо сайт',
+				},
+			],
 		};
 
 		yield put({

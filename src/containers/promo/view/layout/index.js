@@ -1,40 +1,93 @@
 import React from 'react';
-import {StyleSheet,Text,TouchableOpacity,View} from 'react-native';
+import {StyleSheet,FlatList,ImageBackground,Text,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
+
+import Icon from 'react-native-vector-icons/EvilIcons';
+
+import Retailer		from './retailer';
+import Separator	from './separator';
 
 const styles = StyleSheet.create({
 	container: {
-		// backgroundColor: '#eee',
 	},
-	image: {
-		justifyContent: 'center', alignItems: 'center',
-		height: 80, width: '100%',
-		backgroundColor: '#eee',
-	},
-	area: {
-		padding: 10,
+	banner: {
+		padding: 20, paddingTop: 50,
 	},
 	title: {
-		marginBottom: 5,
-		fontSize: 24,
+		marginBottom: 10,
+		color: '#fff',
+		fontSize: 24, fontWeight: 'bold',
+		textTransform: 'uppercase',
+		textShadowRadius: 5, textShadowColor: '#111',
+	},
+	subtitle: {
+		paddingBottom: 10,
+		color: '#bbb',
+		fontSize: 16, fontWeight: 'bold',
+		textTransform: 'uppercase',
 	},
 	ending: {
-		fontSize: 14,
+		color: '#fff',
+		fontSize: 18,
+		textShadowRadius: 5, textShadowColor: '#111',
+	},
+
+	area: {
+		padding: 20,
 	},
 	description: {
-		fontSize: 14,
+		color: '#111',
+		fontSize: 16,
 	},
+
+	retailers: {
+		paddingVertical: 20,
+	},
+	companies: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems : 'center',
+		borderBottomColor: 'lightgrey',
+		borderBottomWidth: 1,
+		paddingTop: 10,
+		paddingBottom: 10,
+		paddingLeft: 20,
+		paddingRight: 20,
+	},
+	circle: {
+		width: 50,
+		height: 50,
+		borderRadius: 50,
+		backgroundColor: 'black',
+	},
+	participate: {
+		width: 30,
+		height: 30,
+		borderRadius: 50,
+		backgroundColor: 'black',
+		justifyContent: 'center',
+		alignItems: 'center',
+	}
 });
 
 export default withNavigation(({navigation,data}) => (
 	<View style={styles.container}>
-		<View style={styles.image}><Text>Баннер</Text></View>
-		<View style={styles.area}>
+		<ImageBackground style={styles.banner} source={{uri:'https://www.sostav.ru/images/news/2018/04/20/on5vjvly.jpg'}}>
 			<Text style={styles.title}>{data.title}</Text>
 			<Text style={styles.ending}>Заканчивается через {data.ending} дней</Text>
+		</ImageBackground>
+		<View style={styles.area}>
+			<Text style={styles.subtitle}>Условия акции</Text>
 			<Text style={styles.description}>{data.description}</Text>
 		</View>
-		<View style={styles.area}>
+		<View style={styles.retailers}>
+			<Text style={[styles.subtitle,{paddingHorizontal:20}]}>Где проводится</Text>
+			<FlatList
+				data={data.retailer}
+				renderItem={({item}) => (<Retailer data={item} />)}
+				ItemSeparatorComponent={Separator}
+				keyExtractor={item => ''+item.id}
+			/>
 		</View>
 	</View>
 ));
