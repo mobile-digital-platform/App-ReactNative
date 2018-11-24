@@ -43,31 +43,6 @@ const styles = StyleSheet.create({
 	retailers: {
 		paddingVertical: 20,
 	},
-	companies: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems : 'center',
-		borderBottomColor: 'lightgrey',
-		borderBottomWidth: 1,
-		paddingTop: 10,
-		paddingBottom: 10,
-		paddingLeft: 20,
-		paddingRight: 20,
-	},
-	circle: {
-		width: 50,
-		height: 50,
-		borderRadius: 50,
-		backgroundColor: 'black',
-	},
-	participate: {
-		width: 30,
-		height: 30,
-		borderRadius: 50,
-		backgroundColor: 'black',
-		justifyContent: 'center',
-		alignItems: 'center',
-	}
 });
 
 export default withNavigation(({navigation,data}) => (
