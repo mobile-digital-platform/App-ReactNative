@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
 
-import Input from './templates/input';
-import Textarea from './templates/textarea';
-import Select from './templates/select';
+import Input		from './templates/input';
+import Textarea		from './templates/textarea';
+import Select		from './templates/select';
 
-import config from '../../config';
+import InputPhone	from './templates/input_phone';
 
 const styles = StyleSheet.create({
 	container: {
@@ -47,7 +47,7 @@ export default () => (
 		</View>
 		<View style={styles.block}>
 			<Text style={styles.title}>Контакты</Text>
-			<Input title="Мобильный телефон" />
+			<InputPhone title="Мобильный телефон" need_confirm={true} />
 			<Input title="E-mail" />
 		</View>
 		<TouchableOpacity style={styles.save}><Text style={styles.save_text}>Сохранить</Text></TouchableOpacity>

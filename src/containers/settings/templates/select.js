@@ -30,10 +30,10 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default (data) => (
+export default (props) => (
 	<TouchableOpacity style={styles.container}>
 		<View style={styles.left}>
-			<Text style={styles.title}>{data.title}</Text>
+			<Text style={styles.title}>{props.title}</Text>
 			<Text style={styles.input}>Марина</Text>
 		</View>
 		<Text styles={styles.right}><Icon name="chevron-right" style={{color:'red'}} size={40}/></Text>

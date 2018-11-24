@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default (data) => (
+export default (props) => (
 	<View style={styles.container}>
 		<TextInput style={styles.input} multiline={true} placeholder="Укажите адрес постоянной регистрации (как в паспорте)" />
 	</View>

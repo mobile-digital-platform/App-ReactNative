@@ -1,29 +1,40 @@
-import React					from 'react';
-import {StatusBar}				from 'react-native';
-import {createStackNavigator}	from 'react-navigation';
-import {Provider}				from 'react-redux';
+import React						from 'react';
+import {StatusBar}					from 'react-native';
+import {createStackNavigator}		from 'react-navigation';
+import {Provider}					from 'react-redux';
 
-import OnboardingScreen			from './screens/onboarding';
-import PromoListScreen			from './screens/promo/main/list';
-import PromoViewScreen			from './screens/promo/main/view';
-import PromoParticipateScreen	from './screens/promo/participate';
-import PromoMyListScreen		from './screens/promo/my/list';
-import PromoMyViewScreen		from './screens/promo/my/view';
-import SettingsScreen			from './screens/settings/main';
+import OnboardingScreen				from './screens/onboarding';
 
-import store					from './redux';
+import PromoListScreen				from './screens/promo/main/list';
+import PromoViewScreen				from './screens/promo/main/view';
+import PromoParticipateScreen		from './screens/promo/participate';
+
+import PromoMyListScreen			from './screens/promo/my/list';
+import PromoMyViewScreen			from './screens/promo/my/view';
+
+import SettingsScreen				from './screens/settings/main';
+import ConfirmPhoneScreen			from './screens/settings/confirm_phone';
+import AuthorizationScreen			from './screens/settings/authorization';
+import ChangePasswordScreen			from './screens/settings/change_password';
+import SettingsAddLoyaltyCardScreen	from './screens/settings/add_loyalty_card';
+
+import store						from './redux';
 
 StatusBar.setBarStyle('dark-content',true);
 
 const Root = createStackNavigator(
 	{
-		onboarding:			OnboardingScreen,
-		promo_list:			PromoListScreen,
-		promo_view:			PromoViewScreen,
-		promo_participate:	PromoParticipateScreen,
-		promo_my_list:		PromoMyListScreen,
-		promo_my_view:		PromoMyViewScreen,
-		settings:			SettingsScreen,
+		onboarding:					OnboardingScreen,
+		promo_list:					PromoListScreen,
+		promo_view:					PromoViewScreen,
+		promo_participate:			PromoParticipateScreen,
+		promo_my_list:				PromoMyListScreen,
+		promo_my_view:				PromoMyViewScreen,
+		settings:					SettingsScreen,
+		settings_confirm_phone:		ConfirmPhoneScreen,
+		settings_authorization:		ConfirmPhoneScreen,
+		settings_change_password:	AuthorizationScreen,
+		settings_add_loyalty_card:	ChangePasswordScreen,
 	},
 	{
 		// initialRouteName: 'onboarding',
@@ -31,7 +42,11 @@ const Root = createStackNavigator(
 		// initialRouteName: 'promo_view',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
-		initialRouteName: 'settings',
+		// initialRouteName: 'settings',
+		initialRouteName: 'settings_confirm_phone',
+		// initialRouteName: 'settings_authorization',
+		// initialRouteName: 'settings_change_password',
+		// initialRouteName: 'settings_add_loyalty_card',
 
 		navigationOptions: {
 			headerStyle: {

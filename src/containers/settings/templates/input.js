@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default (data) => (
+export default (props) => (
 	<View style={styles.container}>
-		<Text style={styles.title}>{data.title}</Text>
+		<Text style={styles.title}>{props.title}</Text>
 		<TextInput style={styles.input} value="Марина" />
 	</View>
 );
