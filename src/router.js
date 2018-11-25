@@ -37,9 +37,10 @@ const Root = createStackNavigator(
 		settings_add_loyalty_card:	SettingsAddLoyaltyCardScreen,
 	},
 	{
-		initialRouteName: 'onboarding',
+		// initialRouteName: 'onboarding',
 		// initialRouteName: 'promo_list',
 		// initialRouteName: 'promo_view',
+		initialRouteName: 'promo_participate',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
 		// initialRouteName: 'settings',

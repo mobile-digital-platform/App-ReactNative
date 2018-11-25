@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 		borderWidth: 1, borderColor: '#ccc',
 		borderRadius: 100,
+		backgroundColor: '#fff',
 	},
 	title: {
 		paddingTop: 5,

@@ -5,23 +5,18 @@ const styles = StyleSheet.create({
 	container: {
 		marginVertical: 5, paddingHorizontal: 20,
 		borderWidth: 1, borderColor: '#ccc',
-		borderRadius: 100,
-	},
-	title: {
-		paddingTop: 5,
-		color: '#bbb',
-		fontSize: 14,
+		borderRadius: 20,
+		backgroundColor: '#fff',
 	},
 	input: {
-		width: '100%',
-		marginBottom: 3, paddingVertical: 3,
+		height: 100, width: '100%',
+		marginTop: 10, marginBottom: 15,
 		fontSize: 16,
 	},
 });
 
 export default (props) => (
 	<View style={styles.container}>
-		<Text style={styles.title}>{props.title}</Text>
-		<TextInput style={styles.input} value="Марина" />
+		<TextInput style={styles.input} multiline={true} placeholder="Укажите адрес постоянной регистрации (как в паспорте)" />
 	</View>
 );

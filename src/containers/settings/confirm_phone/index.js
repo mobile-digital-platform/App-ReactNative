@@ -3,7 +3,7 @@ import {Platform,StyleSheet,Image,Text,TouchableOpacity,View, TextInput, Button,
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import Input from '../templates/input';
+import Input from '../../../templates/input';
 
 const styles = StyleSheet.create({
 	main: {

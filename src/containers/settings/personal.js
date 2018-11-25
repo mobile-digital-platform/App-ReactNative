@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
 
-import Input		from './templates/input';
-import Textarea		from './templates/textarea';
-import Select		from './templates/select';
+import Input		from '../../templates/input';
+import Textarea		from '../../templates/textarea';
+import Select		from '../../templates/select';
 
-import InputPhone	from './templates/input_phone';
+import InputPhone	from '../../templates/input_phone';
 
 const styles = StyleSheet.create({
 	container: {
