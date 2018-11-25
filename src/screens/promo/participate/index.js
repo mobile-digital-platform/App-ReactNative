@@ -1,5 +1,7 @@
 import React,{Component}	from 'react';
-import {StyleSheet,View}	from 'react-native';
+import {StatusBar,StyleSheet,View}	from 'react-native';
+
+import {light,dark}			from '../../../navigation';
 
 import Settings_Button		from '../../../containers/settings_button';
 import Tabs					from '../../../containers/main_tabs';
@@ -15,13 +17,15 @@ const styles = StyleSheet.create({
 
 export default class PromoView extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: navigation.getParam('promo',{title:'Принять участие'}).title,
+		title: 'Принять участие',
 		headerRight: (<Settings_Button navigation={navigation} />),
+		...light,
 	});
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<StatusBar barStyle="light-content" />
 				<Promo_Participate/>
 			</View>
 		);

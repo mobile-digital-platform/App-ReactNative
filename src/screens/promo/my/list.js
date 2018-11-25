@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import {Platform,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
+import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
+
+import {light,dark}		from '../../../navigation';
 
 import Settings_Button	from '../../../containers/settings_button';
 import Tabs				from '../../../containers/main_tabs';
@@ -18,11 +20,13 @@ export default class MyList extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Мои акции',
 		headerRight: (<Settings_Button navigation={navigation} />),
+		...dark,
 	});
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<StatusBar barStyle="dark-content" />
 				<Tabs/>
 				<Promo_List my={true}/>
 			</View>

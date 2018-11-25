@@ -32,36 +32,21 @@ const Root = createStackNavigator(
 		promo_my_view:				PromoMyViewScreen,
 		settings:					SettingsScreen,
 		settings_confirm_phone:		ConfirmPhoneScreen,
-		settings_authorization:		ConfirmPhoneScreen,
-		settings_change_password:	AuthorizationScreen,
-		settings_add_loyalty_card:	ChangePasswordScreen,
+		settings_authorization:		AuthorizationScreen,
+		settings_change_password:	ChangePasswordScreen,
+		settings_add_loyalty_card:	SettingsAddLoyaltyCardScreen,
 	},
 	{
-		// initialRouteName: 'onboarding',
+		initialRouteName: 'onboarding',
 		// initialRouteName: 'promo_list',
 		// initialRouteName: 'promo_view',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
 		// initialRouteName: 'settings',
-		initialRouteName: 'settings_confirm_phone',
+		// initialRouteName: 'settings_confirm_phone',
 		// initialRouteName: 'settings_authorization',
 		// initialRouteName: 'settings_change_password',
 		// initialRouteName: 'settings_add_loyalty_card',
-
-		navigationOptions: {
-			headerStyle: {
-				height: 70,
-			},
-			headerBackTitle: ' ',
-			headerLeftContainerStyle: {
-				padding: 10,
-			},
-			headerTitleStyle: {
-				color: '#000',
-				fontSize: 22, fontWeight: 'bold',
-				textTransform: 'uppercase',
-			},
-		},
 	}
 );
 

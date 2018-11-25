@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet,Text,View} from 'react-native';
+import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -17,18 +18,18 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default () => (
+export default withNavigation(({navigation}) => (
 	<View style={styles.container}>
 		<Text style={styles.title}>Учетная запись</Text>
 		<View style={styles.list}>
-			<View style={styles.list_item}>
+			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_authorize')}>
 				<Icon name="user" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Сменить пользователя</Text>
-			</View>
-			<View style={styles.list_item}>
+			</TouchableOpacity>
+			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_change_password')}>
 				<Icon name="unlock" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Изменить пароль</Text>
-			</View>
+			</TouchableOpacity>
 		</View>
 	</View>
-);
+));

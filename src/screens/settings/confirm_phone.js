@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import {Platform,StatusBar,StyleSheet,Image,ScrollView,Text,TouchableOpacity,View} from 'react-native';
+import {Platform,StatusBar,StyleSheet,View} from 'react-native';
+
+import {light,dark}		from '../../navigation';
 
 import ConfirmPhone		from '../../containers/settings/confirm_phone';
 
@@ -13,19 +15,7 @@ const styles = StyleSheet.create({
 export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Подтвердить телефон',
-		headerStyle: {
-			height: 70,
-			backgroundColor: '#ee0007',
-		},
-		headerBackTitle: ' ',
-		headerLeftContainerStyle: {
-			padding: 10,
-		},
-		headerTitleStyle: {
-			color: '#fff',
-			fontSize: 20, fontWeight: 'bold',
-			textTransform: 'uppercase',
-		},
+		...light,
 	});
 
 	render() {

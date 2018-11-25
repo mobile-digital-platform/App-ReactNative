@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
-import {Platform,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
+import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
+
+import {light,dark}		from '../../../navigation';
 
 import Settings_Button	from '../../../containers/settings_button';
 import Tabs				from '../../../containers/main_tabs';
 
-import Promo_List	from '../../../containers/promo/list';
+import Promo_List		from '../../../containers/promo/list';
 
 const styles = StyleSheet.create({
 	container: {
@@ -18,11 +20,13 @@ export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Акции',
 		headerRight: (<Settings_Button navigation={navigation} />),
+		...dark,
 	});
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<StatusBar barStyle="dark-content" />
 				<Tabs/>
 				<Promo_List my={false}/>
 			</View>

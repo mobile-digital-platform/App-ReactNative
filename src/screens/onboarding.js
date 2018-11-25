@@ -2,7 +2,10 @@ import React,{Component} from 'react';
 import {Platform,StyleSheet,TouchableOpacity,Text,View,Image} from 'react-native';
 
 export default class Onboarding extends Component {
-	static navigationOptions = {title:'Мобильная цифровая платформа',headerTitleStyle:{fontSize:20}};
+	static navigationOptions = {
+		title:'Мобильная цифровая платформа',
+		headerTitleStyle:{fontSize:20}
+	};
 
 	render() {
 		return (

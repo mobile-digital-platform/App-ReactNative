@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Platform,StatusBar,StyleSheet,Image,ScrollView,Text,TouchableOpacity,View} from 'react-native';
 
+import {light,dark}	from '../../navigation';
+
 import Personal		from '../../containers/settings/personal';
 import Profile		from '../../containers/settings/profile';
 import LoyaltyCards	from '../../containers/settings/loyalty_cards';
@@ -17,19 +19,7 @@ const styles = StyleSheet.create({
 export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Настройки',
-		headerStyle: {
-			height: 70,
-			backgroundColor: '#ee0007',
-		},
-		headerBackTitle: ' ',
-		headerLeftContainerStyle: {
-			padding: 10,
-		},
-		headerTitleStyle: {
-			color: '#fff',
-			fontSize: 22, fontWeight: 'bold',
-			textTransform: 'uppercase',
-		},
+		...light,
 	});
 
 	render() {

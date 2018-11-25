@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 
+import {light,dark}		from '../../../navigation';
+
 import Settings_Button	from '../../../containers/settings_button';
 import Tabs				from '../../../containers/main_tabs';
 
@@ -16,20 +18,8 @@ const styles = StyleSheet.create({
 export default class PromoView extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Об акции',
-		headerStyle: {
-			height: 70,
-			backgroundColor: '#ee0007',
-		},
-		headerBackTitle: ' ',
-		headerLeftContainerStyle: {
-			padding: 10,
-		},
-		headerTitleStyle: {
-			color: '#fff',
-			fontSize: 22, fontWeight: 'bold',
-			textTransform: 'uppercase',
-		},
-		headerRight: (<Settings_Button navigation={navigation} styles={{color:'#fff'}} />),
+		headerRight: (<Settings_Button navigation={navigation} style={{color:'#fff'}} />),
+		...light,
 	});
 
 	render() {
