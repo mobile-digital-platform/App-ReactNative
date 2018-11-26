@@ -16,6 +16,7 @@ import SettingsScreen				from './screens/settings/main';
 import ConfirmPhoneScreen			from './screens/settings/confirm_phone';
 import AuthorizationScreen			from './screens/settings/authorization';
 import ChangePasswordScreen			from './screens/settings/change_password';
+import ChangeCityScreen				from './screens/settings/change_city';
 import SettingsAddLoyaltyCardScreen	from './screens/settings/add_loyalty_card';
 
 import store						from './redux';
@@ -34,19 +35,21 @@ const Root = createStackNavigator(
 		settings_confirm_phone:		ConfirmPhoneScreen,
 		settings_authorization:		AuthorizationScreen,
 		settings_change_password:	ChangePasswordScreen,
+		settings_change_city:		ChangeCityScreen,
 		settings_add_loyalty_card:	SettingsAddLoyaltyCardScreen,
 	},
 	{
 		// initialRouteName: 'onboarding',
 		// initialRouteName: 'promo_list',
 		// initialRouteName: 'promo_view',
-		initialRouteName: 'promo_participate',
+		// initialRouteName: 'promo_participate',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
-		// initialRouteName: 'settings',
+		initialRouteName: 'settings',
 		// initialRouteName: 'settings_confirm_phone',
 		// initialRouteName: 'settings_authorization',
 		// initialRouteName: 'settings_change_password',
+		// initialRouteName: 'settings_change_city',
 		// initialRouteName: 'settings_add_loyalty_card',
 	}
 );

@@ -4,7 +4,6 @@ import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
 import Input		from '../../templates/input';
 import Textarea		from '../../templates/textarea';
 import Select		from '../../templates/select';
-
 import InputPhone	from '../../templates/input_phone';
 
 const styles = StyleSheet.create({
@@ -36,7 +35,7 @@ export default () => (
 	<View style={styles.container}>
 		<View style={styles.block}>
 			<Text style={styles.title}>Персональные данные</Text>
-			<Input title="Имя" />
+			<Input title="Имя"		value="Марина" />
 			<Input title="Отчество" />
 			<Input title="Фамилия" />
 			<Select title="Город" />

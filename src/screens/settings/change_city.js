@@ -3,7 +3,8 @@ import {Platform,StatusBar,StyleSheet,View} from 'react-native';
 
 import {light,dark}		from '../../navigation';
 
-import Authorization	from '../../containers/settings/authorization';
+import Settings_Button	from '../../containers/settings_button';
+import ChangeCity		from '../../containers/settings/change_city';
 
 const styles = StyleSheet.create({
 	container: {
@@ -14,7 +15,8 @@ const styles = StyleSheet.create({
 
 export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: 'Авторизация',
+		title: 'Выберите город',
+		headerRight: (<Settings_Button navigation={navigation} style={{color:'#fff'}} />),
 		...light,
 	});
 
@@ -22,7 +24,7 @@ export default class MainList extends Component {
 		return (
 			<View style={styles.container}>
 				<StatusBar barStyle="light-content" />
-				<Authorization/>
+				<ChangeCity/>
 			</View>
 		);
 	}
