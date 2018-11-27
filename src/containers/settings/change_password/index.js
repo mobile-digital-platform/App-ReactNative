@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import {Platform,StyleSheet,Image,Text,TouchableOpacity,View, TextInput, Button, Picker, ScrollView} from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon		from 'react-native-vector-icons/EvilIcons';
 
-import Input from '../../../templates/input';
+import Input	from '../../../templates/input';
 
 const styles = StyleSheet.create({
 	title: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 	},
 	button: {
-		marginBottom: 10, padding: 15,
+		marginVertical: 10, padding: 15,
 		borderRadius: 40,
 		backgroundColor: 'red',
 	},
@@ -59,25 +59,48 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default (props) =>  (
-	<View>
-		<View style={styles.main}>
-			<View style={styles.main_input}><Input title="Новый пароль" /></View>
-			<Text style={styles.main_text}>
-				Пароль должен иметь длину не менее 6 знаков.
-				Рекомендуется, чтобы пароль состоял из строчных и заглавных букв, содержал цифры и специальные символы (-!@#$%).
-			</Text>
-			<Text style={styles.title}>Подтвердите смену текущим паролем</Text>
-			<View style={styles.main_input}><Input title="Текущий пароль" /></View>
-			<TouchableOpacity style={styles.button_disabled}>
-				<Text style={styles.button_disabled_text}>Сохранить</Text>
-			</TouchableOpacity>
-		</View>
-		<View style={styles.reset}>
-			<Text style={styles.title}>Я забыл пароль</Text>
-			<TouchableOpacity style={styles.reset_button}>
-				<Text style={styles.reset_button_text}>Восстановить пароль</Text>
-			</TouchableOpacity>
-		</View>
-	</View>
-);
+export default class Authorization extends Component {
+	state = {
+		new_password_value: '',
+		new_password_error: false,
+		old_password_value: '',
+		old_password_error: false,
+		ready: false,
+	};
+
+	set_new_password = async (new_password_value) => {
+		await this.setState({new_password_value});
+		this.setState({ready:this.state.new_password_value.length && this.state.old_password_value.length});
+	}
+	set_old_password = async (old_password_value) => {
+		await this.setState({old_password_value});
+		this.setState({ready:this.state.new_password_value.length && this.state.old_password_value.length});
+	}
+
+	render() {
+		let state = this.state;
+		console.log(state);
+		return (
+			<View>
+				<View style={styles.main}>
+					<View style={styles.main_input}><Input title="Новый пароль" password={true} error={state.new_password_error} send={this.set_new_password} /></View>
+					<Text style={styles.main_text}>
+						Пароль должен иметь длину не менее 6 знаков.
+						Рекомендуется, чтобы пароль состоял из строчных и заглавных букв, содержал цифры и специальные символы (-!@#$%).
+					</Text>
+					<Text style={styles.title}>Подтвердите смену текущим паролем</Text>
+					<View style={styles.main_input}><Input title="Текущий пароль" password={true} error={state.old_password_error} send={this.set_old_password} /></View>
+					<TouchableOpacity style={state.ready ? styles.button : styles.button_disabled}>
+						<Text style={state.ready ? styles.button_text : styles.button_disabled_text}>Сохранить</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.reset}>
+					<Text style={styles.title}>Я забыл пароль</Text>
+					<TouchableOpacity style={styles.reset_button}>
+						<Text style={styles.reset_button_text}>Восстановить пароль</Text>
+					</TouchableOpacity>
+				</View>
+			</View>
+		);
+	}
+}

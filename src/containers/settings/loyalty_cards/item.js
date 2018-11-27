@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,ImageBackground,Text,TouchableOpacity,View} from 'react-native';
+import {StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'flex-start',
-		paddingVertical: 15,
+		paddingVertical: 25,
 	},
 	image: {
 		height: 50, width: 50,
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
 });
 
 export default withNavigation(({navigation,data}) => (
-	<TouchableOpacity style={styles.container} onPress={_ => navigation.push('promo_participate')}>
+	<View style={styles.container}>
 		<View style={styles.image}></View>
 		<View style={styles.area}>
 			<Text style={styles.title}>{data.retailer.name}</Text>
 			<View style={styles.about}>
 				<Text style={styles.number}>{data.number}</Text>
-				<Text style={styles.remove}><Icon name="close" style={{color:'red'}} size={30} /></Text>
+				<TouchableOpacity><Text style={styles.remove}><Icon name="close" style={{color:'red'}} size={30} /></Text></TouchableOpacity>
 			</View>
 		</View>
-	</TouchableOpacity>
+	</View>
 ));

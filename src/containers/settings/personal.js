@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 	},
 	title: {
-		padding: 10, paddingHorizontal: 20,
+		paddingBottom: 10, paddingHorizontal: 25,
 		color: '#bbb',
-		fontSize: 16, fontWeight: 'bold',
+		fontSize: 14, fontWeight: 'bold',
 		textTransform: 'uppercase',
 	},
 	save: {
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
 
 export default class Personal extends Component {
 	state = {
-		phone:		'',
-		mail:		'',
-		name:		'',
-		father:		'',
+		phone:		'+7 909 000 00 00',
+		mail:		'marina@marina.ma',
+		name:		'Марина',
+		father:		'Андреевна',
 		family:		'',
 		city:		0,
-		address:	'',
+		address:	'Комсомольск-на-Амуре, ул. Луговая, д. 32, кв. 12',
 	};
 
 	send = () => {

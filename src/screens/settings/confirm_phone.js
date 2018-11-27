@@ -11,11 +11,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 	},
 });
+let theme = JSON.parse(JSON.stringify(light));
+theme.headerTitleStyle.fontSize = 17;
 
 export default class MainList extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: 'Подтвердить телефон',
-		...light,
+		title: 'Подтвердить номер',
+		...theme,
 	});
 
 	render() {

@@ -11,10 +11,20 @@ const styles = StyleSheet.create({
 		paddingVertical: 20, paddingHorizontal: 30,
 	},
 	title: {
-		paddingVertical: 10,
+		paddingVertical: 10, paddingHorizontal: 10,
 		color: '#bbb',
-		fontSize: 16, fontWeight: 'bold',
+		fontSize: 14, fontWeight: 'bold',
 		textTransform: 'uppercase',
+	},
+	list_item: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingVertical: 10,
+		// backgroundColor: '#eee',
+	},
+	list_text: {
+		marginLeft: 5,
+		fontSize: 16, fontWeight: 'bold',
 	},
 });
 
@@ -22,7 +32,7 @@ export default withNavigation(({navigation}) => (
 	<View style={styles.container}>
 		<Text style={styles.title}>Учетная запись</Text>
 		<View style={styles.list}>
-			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_authorize')}>
+			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_authorization')}>
 				<Icon name="user" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Сменить пользователя</Text>
 			</TouchableOpacity>

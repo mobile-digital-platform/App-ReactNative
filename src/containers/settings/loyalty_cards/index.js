@@ -10,8 +10,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f4f4f4',
 	},
 	title: {
+		marginBottom: 10,
 		color: '#bbb',
-		fontSize: 16, fontWeight: 'bold',
+		fontSize: 14, fontWeight: 'bold',
 		textTransform: 'uppercase',
 	},
 	save: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
 	},
 	save_text: {
 		color: '#fff',
-		fontSize: 24,
+		fontSize: 20,
 		textAlign: 'center',
 	},
 });

@@ -43,7 +43,7 @@ export default class List extends Component {
 					extraData={this.props}
 					keyExtractor={this.key_extractor}
 					onEndReached={this.props.load_next}
-					onEndReachedThreshold={0.5}
+					onEndReachedThreshold={0.9}
 					onRefresh={this.props.load_new}
 					refreshing={this.props.loading}
 				/>

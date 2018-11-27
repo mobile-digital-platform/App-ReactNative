@@ -4,8 +4,8 @@ import {StyleSheet,TouchableOpacity,TextInput,Text,View} from 'react-native';
 const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
-		height: 50,
-		marginVertical: 5, paddingHorizontal: 20,
+		minHeight: 65,
+		marginVertical: 5, paddingHorizontal: 25,
 		borderWidth: 1, borderColor: '#ccc',
 		borderRadius: 100,
 		backgroundColor: '#fff',
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 		borderColor: 'red',
 	},
 	title: {
-		marginTop: 5,
+		marginTop: 10,
 		// backgroundColor: '#eee',
 		color: '#bbb',
 		fontSize: 14,
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: '100%',
-		marginBottom: 3, paddingVertical: 3,
-		fontSize: 16,
+		marginBottom: 8, paddingVertical: 3,
+		fontSize: 18,
 	},
 	error_text: {
 		marginLeft: 20, marginBottom: 10,
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
 export default class Input extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 		this.state = {
 			active: props.value && props.value.length,

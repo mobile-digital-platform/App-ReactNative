@@ -16,15 +16,16 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 	},
 	tab: {
+		justifyContent: 'center',
 		height: 45,
-		margin: -1, paddingVertical: 10, paddingHorizontal: 20,
+		margin: -1, paddingVertical: 10, paddingHorizontal: 30,
 	},
 	tab_selected: {
 		borderRadius: 100,
 		backgroundColor: 'red',
 	},
 	text: {
-		fontSize: 18,
+		fontSize: 16,
 	},
 	text_selected: {
 		color: '#fff',
@@ -36,10 +37,10 @@ export default withNavigation(({navigation}) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.tab_bar}>
-				<TouchableOpacity style={[styles.tab,selected ? styles.tab_selected : {}]} onPress={_=>navigation.replace('promo_list')}>
+				<TouchableOpacity style={[styles.tab,selected ? [styles.tab_selected,{marginRight:-10}] : {}]} onPress={_=>navigation.replace('promo_list')}>
 					<Text style={[styles.text,selected ? styles.text_selected : {}]}>Все акции</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={[styles.tab,selected ? {} : styles.tab_selected]} onPress={_=>navigation.replace('promo_my_list')}>
+				<TouchableOpacity style={[styles.tab,selected ? {} : [styles.tab_selected,{marginLeft:-10}]]} onPress={_=>navigation.replace('promo_my_list')}>
 					<Text style={[styles.text,selected ? {} : styles.text_selected]}>Мои акции</Text>
 				</TouchableOpacity>
 			</View>

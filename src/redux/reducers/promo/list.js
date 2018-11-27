@@ -77,6 +77,7 @@ export const fetch_data_saga = function*({payload}) {
 			throw("Сервер полоникса не отвечает");
 		}
 		*/
+		yield new Promise((resolve) => setTimeout(resolve,1000));
 
 		let data = [];
 		for(let i=0; i<10; i++) data.push({

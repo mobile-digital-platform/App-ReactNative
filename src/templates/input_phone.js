@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
 import {StyleSheet,TouchableOpacity,TextInput,Text,View} from 'react-native';
+import {withNavigation} from 'react-navigation';
+
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
-		height: 50,
-		marginVertical: 5, paddingHorizontal: 20,
+		minHeight: 65,
+		marginVertical: 5, paddingHorizontal: 25,
 		borderWidth: 1, borderColor: '#ccc',
 		borderRadius: 100,
 		backgroundColor: '#fff',
@@ -14,7 +17,7 @@ const styles = StyleSheet.create({
 		borderColor: 'red',
 	},
 	title: {
-		marginTop: 5,
+		marginTop: 10,
 		// backgroundColor: '#eee',
 		color: '#bbb',
 		fontSize: 14,
@@ -25,17 +28,35 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: '100%',
-		marginBottom: 3, paddingVertical: 3,
-		fontSize: 16,
+		marginBottom: 8, paddingVertical: 3,
+		fontSize: 18,
 	},
 	error_text: {
 		marginLeft: 20, marginBottom: 10,
 		fontSize: 14,
 		color: 'red',
 	},
+	confirm: {
+		marginTop: 10, paddingHorizontal: 20,
+	},
+	confirm_text: {
+		color: '#bbb',
+		fontSize: 16,
+	},
+	confirm_enter: {
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		marginVertical: 5,
+	},
+	confirm_enter_text: {
+		marginBottom: 3,
+		color: 'red',
+		fontSize: 18, fontWeight: 'bold',
+	},
 });
 
-export default class PhoneInput extends Component {
+export default withNavigation(class PhoneInput extends Component {
 	constructor(props) {
 		super(props);
 		console.log(props);
@@ -64,6 +85,7 @@ export default class PhoneInput extends Component {
 
 	render() {
 		let state = this.state;
+		let navigation = this.props.navigation;
 		return (
 			<View>
 				{state.active ? (
@@ -96,7 +118,7 @@ export default class PhoneInput extends Component {
 			</View>
 		);
 	}
-}
+});
 
 /*
 import React from 'react';

@@ -10,12 +10,11 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		height: 150, width: '100%',
+		backgroundColor: '#eee',
 	},
 	area: {
 		width: '100%',
-		marginTop: -1,
-		borderWidth: 1, borderColor: '#ccc',
-		zIndex: -1,
+		borderWidth: 1, borderTopWidth: 0, borderColor: '#ccc',
 	},
 	title: {
 		margin: 20,

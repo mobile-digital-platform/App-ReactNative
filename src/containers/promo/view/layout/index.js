@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,FlatList,ImageBackground,Text,TouchableOpacity,View} from 'react-native';
+import {StyleSheet,FlatList,ImageBackground,ScrollView,Text,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 });
 
 export default withNavigation(({navigation,data}) => (
-	<View style={styles.container}>
+	<ScrollView style={styles.container}>
 		<ImageBackground style={styles.banner} source={{uri:'https://www.sostav.ru/images/news/2018/04/20/on5vjvly.jpg'}}>
 			<Text style={styles.title}>{data.title}</Text>
 			<Text style={styles.ending}>Заканчивается через {data.ending} дней</Text>
@@ -64,5 +64,5 @@ export default withNavigation(({navigation,data}) => (
 				keyExtractor={item => ''+item.id}
 			/>
 		</View>
-	</View>
+	</ScrollView>
 ));
