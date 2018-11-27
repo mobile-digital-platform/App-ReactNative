@@ -106,7 +106,7 @@ export default withNavigation(({navigation,data}) => (
 		</ImageBackground>
 		<View style={styles.authorization}>
 			<Text style={styles.authorization_text}>Если у вас уже есть учетная запись, авторизуйтесь, и все ваши данные будут заполнены автоматически.</Text>
-			<TouchableOpacity style={styles.authorization_link} onPress={_=>navigation.push('settings_authorize')}>
+			<TouchableOpacity style={styles.authorization_link} onPress={_=>navigation.push('settings_authorization')}>
 				<Text style={styles.authorization_link_text}>Авторизация</Text>
 				<Icon name="chevron-right" style={{color:'red'}} size={40} />
 			</TouchableOpacity>

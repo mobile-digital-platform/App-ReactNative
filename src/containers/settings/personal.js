@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
 
 import Input		from '../../templates/input';
+import InputPhone	from '../../templates/input_phone';
 import Textarea		from '../../templates/textarea';
 import Select		from '../../templates/select';
-import InputPhone	from '../../templates/input_phone';
 
 const styles = StyleSheet.create({
 	container: {
@@ -31,24 +31,43 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default () => (
-	<View style={styles.container}>
-		<View style={styles.block}>
-			<Text style={styles.title}>Персональные данные</Text>
-			<Input title="Имя"		value="Марина" />
-			<Input title="Отчество" />
-			<Input title="Фамилия" />
-			<Select title="Город" />
-		</View>
-		<View style={styles.block}>
-			<Text style={styles.title}>Адрес регистрации</Text>
-			<Textarea/>
-		</View>
-		<View style={styles.block}>
-			<Text style={styles.title}>Контакты</Text>
-			<InputPhone title="Мобильный телефон" need_confirm={true} />
-			<Input title="E-mail" />
-		</View>
-		<TouchableOpacity style={styles.save}><Text style={styles.save_text}>Сохранить</Text></TouchableOpacity>
-	</View>
-);
+export default class Personal extends Component {
+	state = {
+		phone:		'',
+		mail:		'',
+		name:		'',
+		father:		'',
+		family:		'',
+		city:		0,
+		address:	'',
+	};
+
+	send = () => {
+
+	}
+
+	render() {
+		let state = this.state;
+		return (
+			<View style={styles.container}>
+				<View style={styles.block}>
+					<Text style={styles.title}>Персональные данные</Text>
+					<Input title="Имя"		value={state.name}		send={value => this.setState({name:value})} />
+					<Input title="Отчество"	value={state.father}	send={value => this.setState({father:value})} />
+					<Input title="Фамилия"	value={state.family}	send={value => this.setState({family:value})} />
+					<Select title="Город"	value={state.city}		send={value => this.setState({city:value})} />
+				</View>
+				<View style={styles.block}>
+					<Text style={styles.title}>Адрес регистрации</Text>
+					<Textarea value={state.address} send={value => this.setState({address:value})} />
+				</View>
+				<View style={styles.block}>
+					<Text style={styles.title}>Контакты</Text>
+					<InputPhone title="Мобильный телефон" value={state.phone} need_confirm={true} send={value => this.setState({phone:value})} />
+					<Input title="E-mail" value={state.mail} send={value => this.setState({mail:value})} />
+				</View>
+				<TouchableOpacity style={styles.save} onPress={this.send}><Text style={styles.save_text}>Сохранить</Text></TouchableOpacity>
+			</View>
+		);
+	}
+}

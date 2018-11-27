@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 		// paddingVertical: 10,
 	},
 	button: {
-		marginBottom: 10, padding: 15,
+		marginVertical: 10, padding: 15,
 		borderRadius: 40,
 		backgroundColor: 'red',
 	},
@@ -65,27 +65,31 @@ export default class Authorization extends Component {
 	state = {
 		phone_value: '',
 		phone_error: false,
-		password_value: '',
+		password_value: '123',
 		password_error: 'Неверный пароль',
+		ready: false,
 	};
 
-	set_phone = (phone_value) => {
-		this.setState({phone_value});
+	set_phone = async (phone_value) => {
+		await this.setState({phone_value});
+		this.setState({ready:this.state.phone_value.length && this.state.password_value.length});
 	}
-	set_password = (password_value) => {
-		this.setState({password_value});
+	set_password = async (password_value) => {
+		await this.setState({password_value});
+		this.setState({ready:this.state.phone_value.length && this.state.password_value.length});
 	}
 
 	render() {
 		let state = this.state;
+		console.log(state);
 		return (
 			<View>
 				<View style={styles.main}>
 					<Text style={styles.main_text}>Для авторизации введите номер телефона и пароль, указанные при регистрации.</Text>
 					<View style={styles.main_input}><InputPhone title="Мобильный телефон" value={state.phone_value} error={state.phone_error} send={this.set_phone} /></View>
 					<View style={styles.main_input}><Input title="Пароль" password={true} value={state.password_value} error={state.password_error} send={this.set_password} /></View>
-					<TouchableOpacity style={styles.button_disabled}>
-						<Text style={styles.button_disabled_text}>Войти</Text>
+					<TouchableOpacity style={state.ready ? styles.button : styles.button_disabled}>
+						<Text style={state.ready ? styles.button_text : styles.button_disabled_text}>Войти</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.reset}>
