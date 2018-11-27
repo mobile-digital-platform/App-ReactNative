@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'baseline',
 		height: 45, width: 258,
-		margin: 5,
+		marginBottom: 10,
 		borderWidth: 1, borderColor: '#ccc',
 		borderRadius: 100,
 	},

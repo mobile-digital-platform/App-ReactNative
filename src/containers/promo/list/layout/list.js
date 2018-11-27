@@ -31,14 +31,13 @@ export default class List extends Component {
 
 	render() {
 		let {data} = this.props;
-		console.log(data);
 
 		return (
 			<View style={styles.container}>
 				<FlatList
 					data={data}
 					renderItem={this.renderItem}
-					ItemSeparatorComponent={Separator}
+					// ItemSeparatorComponent={Separator}
 					ListFooterComponent={this.renderFooter}
 					// ListHeaderComponent={Separator}
 					extraData={this.props}

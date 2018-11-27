@@ -1,31 +1,31 @@
 import React from 'react';
-import {StyleSheet,Text,TouchableOpacity,View} from 'react-native';
+import {StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: 'center', alignItems: 'center',
-		marginHorizontal: 10, padding: 10,
+		alignItems: 'flex-start',
+		margin: 10,
 		// backgroundColor: '#eee',
 	},
 	image: {
-		justifyContent: 'center', alignItems: 'center',
-		height: 80, width: '100%',
-		backgroundColor: '#eee',
+		height: 150, width: '100%',
+	},
+	area: {
+		width: '100%',
+		marginTop: -1,
+		borderWidth: 1, borderColor: '#ccc',
+		zIndex: -1,
 	},
 	title: {
-		marginVertical: 5,
-		fontSize: 24,
-	},
-	ending: {
-		fontSize: 14,
+		margin: 20,
+		fontSize: 20,
 	},
 });
 
 export default withNavigation(({navigation,data}) => (
 	<TouchableOpacity style={styles.container} onPress={_ => navigation.push('promo_view',{id:data.id})}>
-		<View style={styles.image}><Text>Баннер</Text></View>
-		<Text style={styles.title}>{data.title}</Text>
-		<Text style={styles.ending}>Заканчивается через {data.ending} дней</Text>
+		<Image style={styles.image} source={{uri:'https://www.sostav.ru/images/news/2018/04/20/on5vjvly.jpg'}} />
+		<View style={styles.area}><Text style={styles.title}>{data.title.toUpperCase()}</Text></View>
 	</TouchableOpacity>
 ));

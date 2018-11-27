@@ -1,6 +1,7 @@
 const light = {
 	headerStyle: {
 		height: 70,
+		borderBottomWidth: 0,
 		backgroundColor: '#ee0007',
 	},
 	headerTintColor: '#fff',
@@ -18,6 +19,7 @@ const light = {
 const dark = {
 	headerStyle: {
 		height: 70,
+		borderBottomWidth: 0,
 		backgroundColor: '#fff',
 	},
 	headerTintColor: '#000',
