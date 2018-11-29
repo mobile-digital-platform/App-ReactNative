@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -45,15 +46,19 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default () => (
+export default withNavigation((props) => (
 	<View style={styles.container}>
 		<Text style={styles.title}>О приложении</Text>
 		<View style={styles.list}>
-			<TouchableOpacity style={styles.list_item}>
+			<TouchableOpacity style={styles.list_item} onPress={
+				_=>props.navigation.push('web',{title:'Правила',source:'https://www.coca-cola.ru/terms'})
+			}>
 				<Icon name="navicon" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Правила использования приложения</Text>
 			</TouchableOpacity>
-			<TouchableOpacity style={styles.list_item}>
+			<TouchableOpacity style={styles.list_item} onPress={
+				_=>props.navigation.push('web',{title:'Политика',source:'https://www.coca-cola.ru/privacy'})
+			}>
 				<Icon name="navicon" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Политика конфиденциальности</Text>
 			</TouchableOpacity>
@@ -64,4 +69,4 @@ export default () => (
 			<Text style={styles.support_number}>{config.support_number}</Text>
 		</View>
 	</View>
-);
+));

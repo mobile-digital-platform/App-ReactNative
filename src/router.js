@@ -19,6 +19,8 @@ import ChangePasswordScreen			from './screens/settings/change_password';
 import ChangeCityScreen				from './screens/settings/change_city';
 import SettingsAddLoyaltyCardScreen	from './screens/settings/add_loyalty_card';
 
+import WebScreen					from './screens/web';
+
 import store						from './redux';
 
 StatusBar.setBarStyle('dark-content',true);
@@ -37,11 +39,12 @@ const Root = createStackNavigator(
 		settings_change_password:	ChangePasswordScreen,
 		settings_change_city:		ChangeCityScreen,
 		settings_add_loyalty_card:	SettingsAddLoyaltyCardScreen,
+		web:						WebScreen,
 	},
 	{
 		// initialRouteName: 'onboarding',
-		initialRouteName: 'promo_list',
-		// initialRouteName: 'promo_view',
+		// initialRouteName: 'promo_list',
+		initialRouteName: 'promo_view',
 		// initialRouteName: 'promo_participate',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
@@ -51,6 +54,7 @@ const Root = createStackNavigator(
 		// initialRouteName: 'settings_change_password',
 		// initialRouteName: 'settings_change_city',
 		// initialRouteName: 'settings_add_loyalty_card',
+		// initialRouteName: 'web',
 	}
 );
 

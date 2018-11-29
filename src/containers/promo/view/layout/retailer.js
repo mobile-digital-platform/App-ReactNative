@@ -50,16 +50,16 @@ const styles = StyleSheet.create({
 });
 
 export default withNavigation(({navigation,data}) => (
-	<TouchableOpacity style={styles.container} onPress={_ => navigation.push('promo_participate')}>
+	<TouchableOpacity style={styles.container} onPress={_=>navigation.push('promo_participate')}>
 		<View style={styles.image}></View>
 		<View style={styles.area}>
 			<Text style={styles.title}>{data.name}</Text>
 			<View style={styles.about}>
-				<TouchableOpacity style={styles.link_area}>
+				<TouchableOpacity style={styles.link_area} onPress={_=>navigation.push('web',{title:'Сайт акции'})}>
 					<Text style={styles.link}>Сайт акции</Text>
 					<Icon name="chevron-right" style={{color:'red'}} size={30} />
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.participate} onPress={_ => navigation.push('promo_participate')}>
+				<TouchableOpacity style={styles.participate} onPress={_=>navigation.push('promo_participate')}>
 					<Text style={styles.participate_text}>Участвовать</Text>
 				</TouchableOpacity>
 			</View>
