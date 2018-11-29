@@ -42,9 +42,9 @@ const Root = createStackNavigator(
 		web:						WebScreen,
 	},
 	{
-		// initialRouteName: 'onboarding',
+		initialRouteName: 'onboarding',
 		// initialRouteName: 'promo_list',
-		initialRouteName: 'promo_view',
+		// initialRouteName: 'promo_view',
 		// initialRouteName: 'promo_participate',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
