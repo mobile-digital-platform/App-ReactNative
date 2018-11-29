@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default withNavigation(({navigation,data}) => (
-	<TouchableOpacity style={styles.container} onPress={_ => navigation.push('promo_view',{id:data.id})}>
+export default withNavigation(({navigation,data,my,...props}) => (
+	<TouchableOpacity style={styles.container} onPress={_ => navigation.push(my ? 'promo_my_view' : 'promo_view',{id:data.id})}>
 		<Image style={styles.image} source={{uri:'https://www.sostav.ru/images/news/2018/04/20/on5vjvly.jpg'}} />
 		<View style={styles.area}><Text style={styles.title}>{data.title.toUpperCase()}</Text></View>
 	</TouchableOpacity>

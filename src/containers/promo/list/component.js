@@ -18,8 +18,6 @@ export default class PromoListComponent extends Component {
 	}
 
 	render() {
-		console.log("Component",this.props);
-
 		return (
 			<Layout
 				{...this.props}

@@ -20,12 +20,10 @@ const styles = StyleSheet.create({
 export default class List extends Component {
 
 	key_extractor = item => ''+item.id;
-	renderItem = ({item}) => (<Item data={item} />);
+	renderItem = ({item}) => (<Item data={item} my={this.props.my} />);
 	renderFooter = () => {
-		const {loading,loaded} = this.props;
-
-		if(loaded) return (<Text>Больше ничего нет</Text>);
-		if(loading) return (<Wait/>);
+		if(this.props.loaded)	return (<Text>Больше ничего нет</Text>);
+		if(this.props.loading)	return (<Wait/>);
 		return null;
 	};
 
