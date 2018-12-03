@@ -1,6 +1,7 @@
 import {all,call,put,select,takeEvery,takeLatest} from 'redux-saga/effects';
 
-import config from '../../../config';
+import config	from '../../../config';
+import API		from '../../../services/api';
 
 export const ReducerRecord = () => ({
 	data: false,
