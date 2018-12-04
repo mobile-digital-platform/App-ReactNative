@@ -4,7 +4,7 @@ import config	from '../../../config';
 import API		from '../../../services/api';
 
 export const ReducerRecord = () => ({
-	data: [],
+	data: {},
 	error: null,
 	initialed: false,
 	loading: false,
@@ -12,7 +12,7 @@ export const ReducerRecord = () => ({
 });
 
 // Постоянные
-export const module = 'promo_list';
+export const module = 'settings_personal_send';
 
 export const REQUEST		= config.name+'/'+module+'/REQUEST';
 export const SUCCESS		= config.name+'/'+module+'/SUCCESS';
@@ -51,7 +51,7 @@ export default function reducer(st = ReducerRecord(),action) {
 }
 
 // Действие
-export function list_data(payload) {
+export function send_data(payload) {
 	return {
 		type: REQUEST,
 		payload,
@@ -59,13 +59,17 @@ export function list_data(payload) {
 }
 
 // Сага
-export const fetch_data_saga = function*({payload}) {
-	// let data = [];
-	// for(let i=0; i<10; i++) data.push({
-	// 	title: 'Акция '+Math.ceil(Math.random()*10*(i+1)),
-	// 	ending: Math.ceil(Math.random()*20),
-	// });
-	let {response,error} = yield call(API('/PromoGroupList'));
+export const send_data_saga = function*({payload}) {
+	console.log(payload);
+	let {response,error} = yield call(API('/UserDataEdit',{
+		UserID:	payload.id,
+		Name:	payload.name,
+		MName:	payload.father,
+		LName:	payload.family,
+		Gender:	payload.gender,
+		Email:	payload.mail,
+		City:	payload.city,
+	}));
 	if(response) {
 		yield put({
 			type: SUCCESS,
@@ -86,6 +90,6 @@ export const fetch_data_saga = function*({payload}) {
 
 export const saga = function*() {
 	yield all([
-		takeEvery(REQUEST,fetch_data_saga),
+		takeEvery(REQUEST,send_data_saga),
 	]);
 };

@@ -7,11 +7,11 @@ import Wait			from '../../../../templates/wait';
 
 import Item			from './item';
 import Separator	from './separator';
+import Error		from './error';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column',
 		justifyContent: 'flex-start',
 		// backgroundColor: '#ddd',
 	},
@@ -22,14 +22,14 @@ export default class List extends Component {
 	key_extractor = item => ''+item.id;
 	renderItem = ({item}) => (<Item data={item} my={this.props.my} />);
 	renderFooter = () => {
+		if(this.props.error)	return (<Error error={this.props.error} />);
 		if(this.props.loaded)	return (<Text>Больше ничего нет</Text>);
-		// if(this.props.loading)	return (<Wait/>);
+		if(this.props.loading)	return (<Wait/>);
 		return null;
 	};
 
 	render() {
-		let {data} = this.props;
-		console.log(data);
+		let {data,error} = this.props;
 
 		return (
 			<View style={styles.container}>

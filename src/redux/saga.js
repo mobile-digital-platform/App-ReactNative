@@ -1,14 +1,19 @@
 import {all} from 'redux-saga/effects';
 
-import {saga as promo_list_saga}	from './reducers/promo/list';
-import {saga as promo_view_saga}	from './reducers/promo/view';
-import {saga as promo_my_saga}		from './reducers/promo/my';
+// Акции
+import {saga as promo_list}			from './reducers/promo/list';
+import {saga as promo_view}			from './reducers/promo/view';
+import {saga as promo_my}			from './reducers/promo/my';
+
+// Настройки
+import {saga as settings_personal}	from './reducers/settings/personal';
 
 // Главная сага, которая исполняет все остальные саги
 export default function* root_saga() {
 	yield all([
-		promo_list_saga(),
-		promo_view_saga(),
-		promo_my_saga(),
+		promo_list(),
+		promo_view(),
+		promo_my(),
+		settings_personal(),
 	]);
 }

@@ -1,3 +1,5 @@
+// Список акций на главном экране
+
 import {connect} from 'react-redux';
 
 import {list_data,module as promo_module} from '../../../redux/reducers/promo/list';

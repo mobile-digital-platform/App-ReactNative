@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
-import {StyleSheet,TouchableOpacity,Text,View} from 'react-native';
+import {StyleSheet,Alert,TouchableOpacity,Text,View} from 'react-native';
 
-import Input		from '../../templates/input';
-import InputPhone	from '../../templates/input_phone';
-import Textarea		from '../../templates/textarea';
-import Select		from '../../templates/select';
+import Input		from '../../../templates/input';
+import InputPhone	from '../../../templates/input_phone';
+import Textarea		from '../../../templates/textarea';
+import Select		from '../../../templates/select';
 
 const styles = StyleSheet.create({
 	container: {
@@ -33,21 +33,27 @@ const styles = StyleSheet.create({
 
 export default class Personal extends Component {
 	state = {
+		id:			1,
 		phone:		'+7 909 000 00 00',
 		mail:		'marina@marina.ma',
 		name:		'Марина',
 		father:		'Андреевна',
 		family:		'',
+		gender:		0,
 		city:		0,
-		address:	'Комсомольск-на-Амуре, ул. Луговая, д. 32, кв. 12',
+		// address:	'Комсомольск-на-Амуре, ул. Луговая, д. 32, кв. 12',
 	};
 
 	send = () => {
-
+		this.props.send_data(this.state);
 	}
 
 	render() {
 		let state = this.state;
+		let {data,error} = this.props;
+
+		if(error) Alert.alert(error);
+
 		return (
 			<View style={styles.container}>
 				<View style={styles.block}>
@@ -57,10 +63,12 @@ export default class Personal extends Component {
 					<Input title="Фамилия"	value={state.family}	send={value => this.setState({family:value})} />
 					<Select title="Город"	value={state.city}		send={value => this.setState({city:value})} />
 				</View>
+				{/*
 				<View style={styles.block}>
 					<Text style={styles.title}>Адрес регистрации</Text>
 					<Textarea value={state.address} send={value => this.setState({address:value})} />
 				</View>
+				*/}
 				<View style={styles.block}>
 					<Text style={styles.title}>Контакты</Text>
 					<InputPhone title="Мобильный телефон" value={state.phone} need_confirm={true} send={value => this.setState({phone:value})} />
