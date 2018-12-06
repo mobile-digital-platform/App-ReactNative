@@ -23,7 +23,7 @@ export default class List extends Component {
 	renderItem = ({item}) => (<Item data={item} my={this.props.my} />);
 	renderFooter = () => {
 		if(this.props.error)	return (<Error error={this.props.error} />);
-		if(this.props.loaded)	return (<Text>Больше ничего нет</Text>);
+		// if(this.props.loaded)	return (<Text>Больше ничего нет</Text>);
 		if(this.props.loading)	return (<Wait/>);
 		return null;
 	};
@@ -41,9 +41,9 @@ export default class List extends Component {
 					// ListHeaderComponent={Separator}
 					extraData={this.props}
 					keyExtractor={this.key_extractor}
-					onEndReached={this.props.load_next}
-					onEndReachedThreshold={0.9}
-					onRefresh={this.props.load_new}
+					// onEndReached={this.props.load_next}
+					// onEndReachedThreshold={0.9}
+					// onRefresh={this.props.load_new}
 					refreshing={this.props.loading}
 				/>
 			</View>

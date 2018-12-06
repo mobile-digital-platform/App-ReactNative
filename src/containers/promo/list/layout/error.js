@@ -14,5 +14,5 @@ const styles = StyleSheet.create({
 });
 
 export default (props) => (
-	<View style={styles.container}><Text style={styles.text}>{props.error}</Text></View>
+	<View style={styles.container}><Text style={styles.text}>{props.error.message}</Text></View>
 );

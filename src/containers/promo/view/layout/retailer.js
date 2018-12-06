@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,ImageBackground,Text,TouchableOpacity,View} from 'react-native';
+import {StyleSheet,Image,ImageBackground,Text,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		height: 50, width: 50,
-		borderRadius: 50,
+		borderRadius: 25,
 		backgroundColor: '#ddd',
 	},
 	area: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 
 export default withNavigation(({navigation,data}) => (
 	<TouchableOpacity style={styles.container} onPress={_=>navigation.push('promo_participate')}>
-		<View style={styles.image}></View>
+		<Image style={styles.image} source={{src:data.image_url}} />
 		<View style={styles.area}>
 			<Text style={styles.title}>{data.name}</Text>
 			<View style={styles.about}>

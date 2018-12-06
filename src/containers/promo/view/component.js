@@ -8,12 +8,13 @@ export default withNavigation(class X extends Component {
 	state = {};
 
 	componentDidMount() {
-		this.id = this.props.navigation.getParam('id',0);
-		this.props.get_data(this.id);
+		let data = this.props.navigation.getParam('data');
+		this.props.set_data(data);
+		this.props.get_retailers(this.props.id);
 	}
 
 	render() {
-		console.log("Component",this.props);
+		console.log("Component",this.props.data);
 
 		return (
 			<Layout

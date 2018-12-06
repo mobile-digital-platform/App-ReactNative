@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
 import {StyleSheet,ScrollView,TouchableOpacity,View,Text} from 'react-native';
 
+import Splash from './layout/splash';
 import Layout from './layout/list';
 
 export default class PromoListComponent extends Component {
 	state = {};
 
 	componentDidMount() {
-		this.load_next();
+		if(!this.props.data.length) this.load_next();
 	}
 
 	load_new = () => {
@@ -18,13 +19,15 @@ export default class PromoListComponent extends Component {
 	}
 
 	render() {
-		return (
+		return 1||this.props.initialized ? (
 			<Layout
 				{...this.props}
 				state={this.state}
 				load_new={this.load_new}
 				load_next={this.load_next}
 			/>
+		) : (
+			<Splash/>
 		);
 	}
 };

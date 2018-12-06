@@ -47,9 +47,9 @@ const styles = StyleSheet.create({
 
 export default withNavigation(({navigation,data}) => (
 	<ScrollView style={styles.container}>
-		<ImageBackground style={styles.banner} source={{uri:'https://www.sostav.ru/images/news/2018/04/20/on5vjvly.jpg'}}>
+		<ImageBackground style={styles.banner} source={{uri:data.image_url}}>
 			<Text style={styles.title}>{data.title}</Text>
-			<Text style={styles.ending}>Заканчивается через {data.ending} дней</Text>
+			{data ? (<Text style={styles.ending}>Заканчивается через {Math.ceil((data.end.getTime()-new Date().getTime())/(24*60*60*1000))} дней</Text>) : null}
 		</ImageBackground>
 		<View style={styles.area}>
 			<Text style={styles.subtitle}>Условия акции</Text>

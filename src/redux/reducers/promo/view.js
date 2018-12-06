@@ -6,7 +6,7 @@ import API		from '../../../services/api';
 export const ReducerRecord = () => ({
 	data: false,
 	error: null,
-	initialed: false,
+	initialized: false,
 	loading: false,
 	loaded: false,
 });
@@ -14,6 +14,7 @@ export const ReducerRecord = () => ({
 // Постоянные
 export const module = 'promo_view';
 
+export const SET			= config.name+'/'+module+'/SET';
 export const REQUEST		= config.name+'/'+module+'/REQUEST';
 export const SUCCESS		= config.name+'/'+module+'/SUCCESS';
 export const ERROR			= config.name+'/'+module+'/ERROR';
@@ -22,23 +23,38 @@ export const ERROR			= config.name+'/'+module+'/ERROR';
 export default function reducer(st = ReducerRecord(),action) {
 	const {type,payload,error} = action;
 
-	if(type == REQUEST) {
-		return {...st,loading:true};
+	switch(type) {
+		case SET:		return {...st,data:payload};
+	 	case REQUEST:	return {...st,loading:true};
+ 		case SUCCESS:
+			let retailer = payload.data.map(e => ({
+				// id:			e.PromoID,
+				// group_id:	e.PromoGroupID,
+				// title:		e.PromoGroupName,
+				id:				e.NetworkID,
+				name:			e.NetworkName,
+				description:	e.Description,
+				start:			new Date(e.Start),
+				end:			new Date(e.Finish),
+				image_url:		e.BannerLink,
+				link:			e.WebSiteLink,
+				active:			e.IsActive,
+			})).filter(e => e.active);
 
-	} else if(type == SUCCESS) {
-		return {
+			return {
+				...st,
+				data: {
+					...st.data,
+					retailer,
+				},
+				error: null,
+				loading: false,
+				loaded: true,
+			};
+	 	case ERROR:		return {
 			...st,
-			loading: false,
-			loaded: true,
-			data: payload.data,
-			error: null,
-		};
-
-	} else if(type == ERROR) {
-		return {
-			...st,
-			loading: false,
 			error,
+			loading: false,
 		};
 	}
 
@@ -46,43 +62,40 @@ export default function reducer(st = ReducerRecord(),action) {
 }
 
 // Действие
-export function get_data(payload) {
-	return {
-		type: REQUEST,
-		payload,
-	};
-}
+export const set_data		= (payload) => ({type:SET,payload});
+export const get_retailers	= (payload) => ({type:REQUEST,payload});
 
 // Сага
 export const fetch_data_saga = function*({payload}) {
-	try {
-		let data = {
-			id: payload.id,
-			title: 'Акция '+Math.ceil(Math.random()*100),
-			ending: Math.ceil(Math.random()*20),
-			description: 'Описание условий акции описание условий акции описание условий акции описание условий акции',
-			retailer: [
-				{
-					id: 1,
-					name: 'Ашан',
-					link: 'ссылка на промо сайт',
-				},
-				{
-					id: 2,
-					name: 'Пятерочка',
-					link: 'ссылка на промо сайт',
-				},
-			],
-		};
-
+	// let data = {
+	// 	id: payload.id,
+	// 	title: 'Акция '+Math.ceil(Math.random()*100),
+	// 	ending: Math.ceil(Math.random()*20),
+	// 	description: 'Описание условий акции описание условий акции описание условий акции описание условий акции',
+	// 	retailer: [
+	// 		{
+	// 			id: 1,
+	// 			name: 'Ашан',
+	// 			link: 'ссылка на промо сайт',
+	// 		},
+	// 		{
+	// 			id: 2,
+	// 			name: 'Пятерочка',
+	// 			link: 'ссылка на промо сайт',
+	// 		},
+	// 	],
+	// };
+	let {response,error} = yield call(API,'/PromoList',{PromoGroupID:payload});
+	if(response) {
 		yield put({
 			type: SUCCESS,
 			payload: {
 				...payload,
-				data,
-			},
+				data: response.Data.data,
+			}
 		});
-	} catch (error) {
+	}
+	if(error) {
 		console.log('error',error);
 		yield put({
 			type: ERROR,
