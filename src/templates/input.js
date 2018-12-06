@@ -40,12 +40,22 @@ export default class Input extends Component {
 		super(props);
 
 		this.state = {
-			active: props.value && props.value.length,
-			value: props.value || '',
-			error: false || props.error,
+			active: !!(props.value?.length),
+			value: props.value ?? '',
+			error: props.error,
 		};
 
 		this.input = React.createRef();
+	}
+
+	componentDidUpdate(prevProps) {
+		if(!Object.is(this.props,prevProps)) {
+			this.setState({
+				active: !!(this.props.value?.length),
+				value: this.props.value ?? '',
+				error: this.props.error,
+			});
+		}
 	}
 
 	set_value = (value) => {
@@ -82,7 +92,7 @@ export default class Input extends Component {
 						<Text style={[styles.title,styles.title_active]}>{this.props.title}</Text>
 					</TouchableOpacity>
 				)}
-				{state.error && (<Text style={styles.error_text}>{state.error}</Text>)}
+				{state.error ? (<Text style={styles.error_text}>{state.error}</Text>) : null}
 			</View>
 		);
 	}

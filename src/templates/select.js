@@ -47,7 +47,7 @@ export default withNavigation(({navigation,...props}) => (
 	<TouchableOpacity style={styles.container} onPress={_=>navigation.push('settings_change_city')}>
 		<View style={styles.left}>
 			<Text style={styles.title}>{props.title}</Text>
-			<Text style={styles.input}>Комсомольск-на-Амуре</Text>
+			<Text style={styles.input}>Москва</Text>
 		</View>
 		<Text styles={styles.right}><Icon name="chevron-right" style={{color:'red'}} size={40}/></Text>
 	</TouchableOpacity>

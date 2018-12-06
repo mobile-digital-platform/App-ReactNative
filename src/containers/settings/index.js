@@ -1,11 +1,13 @@
-// Авторизация
-
 import {connect} from 'react-redux';
 
 import {
-	authorize,
+	register,
+	get_personal_data,
+	change_personal_data,
+	log_out,
+	remove_error,
 	module as settings_module
-} from '../../../redux/reducers/settings';
+} from '../../redux/reducers/settings';
 import Component from './component';
 
 const mapStateToProps = state => ({
@@ -16,7 +18,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	authorize,
+	register,
+	get_personal_data,
+	change_personal_data,
+	log_out,
+	remove_error,
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Component);

@@ -74,7 +74,7 @@ export const fetch_data_saga = function*({payload}) {
 			type: SUCCESS,
 			payload: {
 				...payload,
-				data: response.Data.data,
+				data: response,
 			}
 		});
 	}

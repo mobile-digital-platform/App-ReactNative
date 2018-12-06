@@ -4,7 +4,7 @@ import {withNavigation} from 'react-navigation';
 
 import Layout from './layout';
 
-export default withNavigation(class X extends Component {
+export default withNavigation(class PromoViewComponent extends Component {
 	state = {};
 
 	componentDidMount() {

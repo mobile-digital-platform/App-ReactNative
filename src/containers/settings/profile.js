@@ -28,11 +28,14 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default withNavigation(({navigation}) => (
+export default withNavigation(({navigation,...props}) => (
 	<View style={styles.container}>
 		<Text style={styles.title}>Учетная запись</Text>
 		<View style={styles.list}>
-			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_authorization')}>
+			<TouchableOpacity style={styles.list_item} onPress={_=>{
+				props.log_out();
+				navigation.push('settings_authorization');
+			}}>
 				<Icon name="user" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Сменить пользователя</Text>
 			</TouchableOpacity>

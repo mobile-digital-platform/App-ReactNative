@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 	loading:		state[promo_module].loading,
 	loaded:			state[promo_module].loaded,
 	error:			state[promo_module].error,
-	initialized:	state[promo_module].initialed,
+	initialized:	state[promo_module].initialized,
 	data:			state[promo_module].data,
 });
 

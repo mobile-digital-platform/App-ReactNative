@@ -81,7 +81,6 @@ export default class Authorization extends Component {
 
 	render() {
 		let state = this.state;
-		console.log(state);
 		return (
 			<View>
 				<View style={styles.main}>

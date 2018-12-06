@@ -3,10 +3,7 @@ import {Platform,StatusBar,StyleSheet,Image,ScrollView,Text,TouchableOpacity,Vie
 
 import {light,dark}	from '../../navigation';
 
-import Personal		from '../../containers/settings/personal';
-import Profile		from '../../containers/settings/profile';
-import LoyaltyCards	from '../../containers/settings/loyalty_cards';
-import About		from '../../containers/settings/about';
+import Main			from '../../containers/settings';
 
 const styles = StyleSheet.create({
 	container: {
@@ -26,10 +23,7 @@ export default class MainList extends Component {
 		return (
 			<ScrollView style={styles.container}>
 				<StatusBar barStyle="light-content" />
-				<Personal/>
-				<Profile/>
-				<LoyaltyCards/>
-				<About/>
+				<Main/>
 			</ScrollView>
 		);
 	}

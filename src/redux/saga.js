@@ -6,6 +6,7 @@ import {saga as promo_my}					from './reducers/promo/my';
 import {saga as promo_view}					from './reducers/promo/view';
 
 // Настройки
+import {saga as settings}					from './reducers/settings';
 import {saga as settings_authorization}		from './reducers/settings/authorization';
 import {saga as settings_change_password}	from './reducers/settings/change_password';
 import {saga as settings_confirm_phone}		from './reducers/settings/confirm_phone';
@@ -17,6 +18,7 @@ export default function* root_saga() {
 		promo_list(),
 		promo_my(),
 		promo_view(),
+		settings(),
 		settings_authorization(),
 		settings_change_password(),
 		settings_confirm_phone(),

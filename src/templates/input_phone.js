@@ -56,18 +56,27 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default withNavigation(class PhoneInput extends Component {
+export default withNavigation(class InputPhone extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 		this.state = {
-			active: props.value && props.value.length,
-			value: props.value || '',
-			error: false || props.error,
+			active: !!(props.value?.length),
+			value: props.value ?? '',
+			error: props.error,
 		};
 
 		this.input = React.createRef();
+	}
+
+	componentDidUpdate(prevProps) {
+		if(!Object.is(this.props,prevProps)) {
+			this.setState({
+				active: !!(this.props.value?.length),
+				value: this.props.value ?? '',
+				error: this.props.error,
+			});
+		}
 	}
 
 	set_value = (value) => {
@@ -84,7 +93,7 @@ export default withNavigation(class PhoneInput extends Component {
 	}
 
 	render() {
-		let state = this.state;
+		let props = this.props,state = this.state;
 		let navigation = this.props.navigation;
 		return (
 			<View>
@@ -95,6 +104,7 @@ export default withNavigation(class PhoneInput extends Component {
 							ref={this.input}
 							style={styles.input}
 							value={state.value}
+							disabled={props.disabled}
 							keyboardType="phone-pad"
 							onChangeText={this.set_value}
 							onBlur={this.reset_active}
@@ -105,8 +115,8 @@ export default withNavigation(class PhoneInput extends Component {
 						<Text style={[styles.title,styles.title_active]}>{this.props.title}</Text>
 					</TouchableOpacity>
 				)}
-				{state.error && (<Text style={styles.error_text}>{state.error}</Text>)}
-				{this.props.need_confirm && (
+				{state.error ? (<Text style={styles.error_text}>{state.error}</Text>) : null}
+				{this.props.need_confirm ? (
 				<View style={styles.confirm}>
 					<Text style={styles.confirm_text}>На номер отправлено SMS с кодом подтверждения</Text>
 					<TouchableOpacity style={styles.confirm_enter} onPress={_=>navigation.push('settings_confirm_phone')}>
@@ -114,7 +124,7 @@ export default withNavigation(class PhoneInput extends Component {
 						<Icon name="chevron-right" style={{color:'red'}} size={40}/>
 					</TouchableOpacity>
 				</View>
-				)}
+			) : null}
 			</View>
 		);
 	}

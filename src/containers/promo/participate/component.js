@@ -4,12 +4,12 @@ import {withNavigation} from 'react-navigation';
 
 import Layout from './layout';
 
-export default withNavigation(class X extends Component {
+export default withNavigation(class PromoParticipaateComponent extends Component {
 	state = {};
 
 	componentDidMount() {
 		this.id = this.props.navigation.getParam('id',0);
-		this.props.get_data(this.id);
+		// this.props.get_data(this.id);
 	}
 
 	render() {

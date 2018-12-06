@@ -4,6 +4,7 @@ export default function*(method,data = {}) {
 	if(method.substr(-1) == '/') method = method.substr(0,-1);
 	if(method.substr(0,1) != '/') method = '/'+method;
 	if(methods.indexOf(method) != -1) {
+		console.log("API: "+domain+method,data);
 		let res = yield fetch(domain+method,{
 			method: 'POST',
 			// mode: 'no-cors',
@@ -16,14 +17,14 @@ export default function*(method,data = {}) {
 			},
 			body: JSON.stringify({Data:data}),
 		});
-		// console.log("API: "+domain+method,data);
 
 		// yield new Promise(res => setTimeout(res,1000));
 
 		if(res.status == 200) {
-			let data = (yield res.json()).d;
-			if(!data.Result === false) {
-				return {error:{message:data.code}};
+			let data = (yield res.json()).d.Data.data;
+			console.log(data);
+			if(data.Result === false) {
+				return {error:{message:data.Code}};
 			} else {
 				return {response:data};
 			}
