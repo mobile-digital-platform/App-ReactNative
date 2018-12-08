@@ -23,20 +23,47 @@ export default withNavigation(class SettingsComponent extends Component {
 		}
 	}
 
-	componentDidUpdate() {
-		if(this.props.error) {
-			Alert.alert(this.props.error.message);
-			this.props.remove_error();
+	componentDidUpdate(prev_props) {
+		if(!Object.is(this.props,prev_props)) {
+			if(this.props.last_action == 'registration') {
+				if(this.props.registration_state.error) {
+					Alert.alert(this.props.registration_state.error.message);
+					this.props.remove_registration_error();
+				} else {
+					Alert.alert('Поздравляем, вы успешно зарегистрировались','Подтвердите свой номер телефона');
+					this.props.navigation.push('settings_confirm_phone');
+				}
+			}
+			if(this.props.last_action == 'get_personal_data') {
+				if(this.props.get_personal_data_state.error) {
+					Alert.alert(this.props.get_personal_data_state.error.message);
+					this.props.remove_get_personal_data_error();
+				}
+			}
+			if(this.props.last_action == 'save_personal_data') {
+				if(this.props.save_personal_data_state.error) {
+					Alert.alert(this.props.save_personal_data_state.error.message);
+					this.props.remove_save_personal_data_error();
+				}
+			}
+			if(this.props.last_action == 'change_city') {
+				this.setState({personal_data:this.props.user});
+			}
 		}
 	}
 
-	save_personal_data = (data) => {
-		if(this.state.data)	this.props.save_personal_data(data);
-		else				this.props.register(data);
+	save_personal_data = async (data) => {
+		// Если он уже вошел, то сохраняем, иначе регистрируем
+		if(this.state.personal_data) {
+			await this.setState({...data});
+			this.props.save_personal_data(this.state.personal_data);
+		} else {
+			this.props.register(data);
+		}
 	}
 
 	render() {
-		console.log("Settings Component",this.props.data);
+		// console.log("Settings Component",this.props);
 
 		return (
 			<View>

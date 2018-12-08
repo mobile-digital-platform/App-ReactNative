@@ -80,6 +80,7 @@ export default withNavigation(class InputPhone extends Component {
 	}
 
 	set_value = (value) => {
+		if(value.substr(0,1) == '+') value = value.substr(1);
 		this.setState({value,error:false});
 		this.props.send && this.props.send(value);
 	}
@@ -118,7 +119,7 @@ export default withNavigation(class InputPhone extends Component {
 				{state.error ? (<Text style={styles.error_text}>{state.error}</Text>) : null}
 				{this.props.need_confirm ? (
 				<View style={styles.confirm}>
-					<Text style={styles.confirm_text}>На номер отправлено SMS с кодом подтверждения</Text>
+					<Text style={styles.confirm_text}>Вам необходимо подтвердить номер телефона по СМС</Text>
 					<TouchableOpacity style={styles.confirm_enter} onPress={_=>navigation.push('settings_confirm_phone')}>
 						<Text style={styles.confirm_enter_text}>Ввести код подтверждения</Text>
 						<Icon name="chevron-right" style={{color:'red'}} size={40}/>

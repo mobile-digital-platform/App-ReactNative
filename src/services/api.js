@@ -22,7 +22,7 @@ export default function*(method,data = {}) {
 
 		if(res.status == 200) {
 			let data = (yield res.json()).d.Data.data;
-			console.log(data);
+			// console.log(data);
 			if(data.Result === false) {
 				return {error:{message:data.Code}};
 			} else {

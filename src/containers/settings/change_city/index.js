@@ -1,30 +1,17 @@
-import React,{Component} from 'react';
-import {Platform,StyleSheet,Image,Text,TouchableOpacity,View, TextInput, Button, Picker, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
+import {
+	change_city,
+	module as settings_module
+} from '../../../redux/reducers/settings';
+import Component from './component';
 
-import Input from '../../../templates/input';
-
-const styles = StyleSheet.create({
-	container: {
-		padding: 20,
-	},
-	input: {
-		marginVertical: 10,
-		paddingVertical: 15, paddingHorizontal: 20,
-		borderWidth: 1, borderColor: '#ccc',
-		borderRadius: 100,
-		fontSize: 20,
-	},
-	tint: {
-		marginVertical: 10, paddingHorizontal: 20,
-		fontSize: 16,
-	},
+const mapStateToProps = state => ({
+	user: state[settings_module].user,
 });
 
-export default (props) =>  (
-	<View style={styles.container}>
-		<TextInput style={styles.input} placeholder="Ваш город" />
-		<Text style={styles.tint}>Начните писать название вашего города, а потом выберите его из вариантов, которые появятся ниже.</Text>
-	</View>
-);
+const mapDispatchToProps = {
+	change_city,
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Component);

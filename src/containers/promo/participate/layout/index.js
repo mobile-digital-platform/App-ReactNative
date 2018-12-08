@@ -5,7 +5,7 @@ import {withNavigation} from 'react-navigation';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Input		from '../../../../templates/input';
-import Select		from '../../../../templates/select';
+import SelectCity	from '../../../../templates/select_city';
 import InputPhone	from '../../../../templates/input_phone';
 
 const styles = StyleSheet.create({
@@ -120,7 +120,7 @@ export default withNavigation(({navigation,data}) => (
 			<View style={styles.block}>
 				<InputPhone title="Мобильный телефон" />
 				<Input title="E-mail" />
-				<Select title="Город" />
+				<SelectCity/>
 			</View>
 			<View style={styles.loyalty_card_block}>
 				<Text style={styles.subtitle}>Карта лояльности</Text>
