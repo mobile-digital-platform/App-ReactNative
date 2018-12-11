@@ -12,9 +12,10 @@ const styles = StyleSheet.create({
 	},
 	banner: {
 		padding: 20, paddingTop: 50,
+		backgroundColor: '#000',
 	},
 	title: {
-		marginBottom: 10,
+		marginBottom: 20,
 		color: '#fff',
 		fontSize: 24, fontWeight: 'bold',
 		textTransform: 'uppercase',
@@ -47,14 +48,16 @@ const styles = StyleSheet.create({
 
 export default withNavigation(({navigation,data}) => (
 	<ScrollView style={styles.container}>
-		<ImageBackground style={styles.banner} source={{uri:data.image_url}}>
+		<ImageBackground style={styles.banner} imageStyle={{opacity:0.7}} source={{uri:data.image_url}}>
 			<Text style={styles.title}>{data.title}</Text>
-			{data ? (<Text style={styles.ending}>Заканчивается через {Math.ceil((data.end.getTime()-new Date().getTime())/(24*60*60*1000))} дней</Text>) : null}
+			{/*data ? (<Text style={styles.ending}>Заканчивается через {Math.ceil((data.end.getTime()-new Date().getTime())/(24*60*60*1000))} дней</Text>) : null*/}
 		</ImageBackground>
-		<View style={styles.area}>
-			<Text style={styles.subtitle}>Условия акции</Text>
-			<Text style={styles.description}>{data.description}</Text>
-		</View>
+		{data.description?.length ? (
+			<View style={styles.area}>
+				<Text style={styles.subtitle}>Условия акции</Text>
+				<Text style={styles.description}>{data.description}</Text>
+			</View>
+		) : null}
 		<View style={styles.retailers}>
 			<Text style={[styles.subtitle,{paddingHorizontal:20}]}>Где проводится</Text>
 			<FlatList

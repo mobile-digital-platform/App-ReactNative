@@ -32,15 +32,15 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default withNavigation(({navigation}) => {
-	let selected = navigation.state.routeName === 'promo_list';
+export default withNavigation(({my,send}) => {
+	let selected = !my;
 	return (
 		<View style={styles.container}>
 			<View style={styles.tab_bar}>
-				<TouchableOpacity style={[styles.tab,selected ? [styles.tab_selected,{marginRight:-10}] : {}]} onPress={_=>navigation.replace('promo_list')}>
+				<TouchableOpacity style={[styles.tab,selected ? [styles.tab_selected,{marginRight:-10}] : {}]} onPress={_=>send(false)}>
 					<Text style={[styles.text,selected ? styles.text_selected : {}]}>Все акции</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={[styles.tab,selected ? {} : [styles.tab_selected,{marginLeft:-10}]]} onPress={_=>navigation.replace('promo_my_list')}>
+				<TouchableOpacity style={[styles.tab,selected ? {} : [styles.tab_selected,{marginLeft:-10}]]} onPress={_=>send(true)}>
 					<Text style={[styles.text,selected ? {} : styles.text_selected]}>Мои акции</Text>
 				</TouchableOpacity>
 			</View>

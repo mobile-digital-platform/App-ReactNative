@@ -59,7 +59,7 @@ export default function reducer(st = ReducerRecord(),action) {
 }
 
 // Действия
-export const list_data = (payload) => ({type:REQUEST,payload});
+export const get_data = (payload) => ({type:REQUEST,payload});
 
 // Сага
 export const fetch_data_saga = function*({payload}) {

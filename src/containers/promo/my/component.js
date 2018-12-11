@@ -4,17 +4,15 @@ import {withNavigation} from 'react-navigation';
 
 import Layout from './layout';
 
-export default withNavigation(class X extends Component {
+export default withNavigation(class MyPromoListComponent extends Component {
 	state = {};
 
 	componentDidMount() {
-		this.id = this.props.navigation.getParam('id',0);
-		this.props.get_data(this.id);
 	}
 
 	render() {
-		console.log("Component",this.props);
-		
+		console.log("Component My Promo List",this.props);
+
 		return (
 			<Layout
 				{...this.props}

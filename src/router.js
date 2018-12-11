@@ -4,13 +4,12 @@ import {createStackNavigator}		from 'react-navigation';
 import {Provider}					from 'react-redux';
 
 import OnboardingScreen				from './screens/onboarding';
+import SplashScreen					from './screens/splash';
 
-import PromoListScreen				from './screens/promo/main/list';
-import PromoViewScreen				from './screens/promo/main/view';
+import PromoListScreen				from './screens/promo/list';
+import PromoViewScreen				from './screens/promo/view';
 import PromoParticipateScreen		from './screens/promo/participate';
-
-import PromoMyListScreen			from './screens/promo/my/list';
-import PromoMyViewScreen			from './screens/promo/my/view';
+import PromoMyListScreen			from './screens/promo/my';
 
 import SettingsScreen				from './screens/settings/main';
 import ConfirmPhoneScreen			from './screens/settings/confirm_phone';
@@ -23,16 +22,16 @@ import WebScreen					from './screens/web';
 
 import store						from './redux';
 
-StatusBar.setBarStyle('dark-content',true);
+StatusBar.setBarStyle('light-content',true);
 
 const Root = createStackNavigator(
 	{
 		onboarding:					OnboardingScreen,
+		splash:						SplashScreen,
 		promo_list:					PromoListScreen,
 		promo_view:					PromoViewScreen,
 		promo_participate:			PromoParticipateScreen,
-		promo_my_list:				PromoMyListScreen,
-		promo_my_view:				PromoMyViewScreen,
+		promo_my_view:				PromoMyListScreen,
 		settings:					SettingsScreen,
 		settings_confirm_phone:		ConfirmPhoneScreen,
 		settings_authorization:		AuthorizationScreen,
@@ -42,13 +41,14 @@ const Root = createStackNavigator(
 		web:						WebScreen,
 	},
 	{
-		// initialRouteName: 'onboarding',
+		initialRouteName: 'onboarding',
+		// initialRouteName: 'splash',
 		// initialRouteName: 'promo_list',
 		// initialRouteName: 'promo_view',
 		// initialRouteName: 'promo_participate',
 		// initialRouteName: 'promo_my_list',
 		// initialRouteName: 'promo_my_view',
-		initialRouteName: 'settings',
+		// initialRouteName: 'settings',
 		// initialRouteName: 'settings_confirm_phone',
 		// initialRouteName: 'settings_authorization',
 		// initialRouteName: 'settings_change_password',

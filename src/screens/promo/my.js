@@ -1,12 +1,11 @@
 import React,{Component} from 'react';
 import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 
-import {light,dark}		from '../../../navigation';
+import {light,dark}		from '../../navigation';
 
-import Settings_Button	from '../../../containers/settings_button';
-import Tabs				from '../../../containers/main_tabs';
+import Settings_Button	from '../../containers/settings_button';
 
-import Promo_View	from '../../../containers/promo/view';
+import Promo_View		from '../../containers/promo/my';
 
 const styles = StyleSheet.create({
 	container: {
@@ -17,7 +16,7 @@ const styles = StyleSheet.create({
 
 export default class PromoView extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: 'Об акции',
+		title: 'Моя акция',
 		headerRight: (<Settings_Button navigation={navigation} style={{color:'#fff'}} />),
 		...light,
 	});

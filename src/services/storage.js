@@ -1,6 +1,7 @@
 import {AsyncStorage} from 'react-native';
 
-const storage_name = 'coca-cola';
+import config from '../config';
+const storage_name = config.storage_name;
 
 // Хранилище местных данных
 export default new function() {
@@ -26,7 +27,6 @@ export default new function() {
 	this.save = async function() {
 		await ready;
 		await AsyncStorage.setItem(storage_name,JSON.stringify(st));
-		await update(this);
 	}
 
 	// Есть ли данный элемент в хранилище
@@ -98,11 +98,8 @@ export default new function() {
 	}
 
 	// Устанавливаем краткие ссылки на свойста о пользователе
-	var update = async () => {
-		await ready;
-		this.we = await this.get('user');
-		if(this.we) this.id = this.user_id = this.we.id;
-	}
-
-	update();
+	this.id = this.user_id = null;
+	this.we = this.get('user').then(we => {
+		this.id = this.user_id = we?.id;
+	});
 }

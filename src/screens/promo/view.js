@@ -1,12 +1,12 @@
-import React,{Component}	from 'react';
-import {StatusBar,StyleSheet,View}	from 'react-native';
+import React,{Component} from 'react';
+import {Platform,StatusBar,StyleSheet,Image,Text,TouchableOpacity,View} from 'react-native';
 
-import {light,dark}			from '../../../navigation';
+import {light,dark}		from '../../navigation';
 
-import Settings_Button		from '../../../containers/settings_button';
-import Tabs					from '../../../containers/main_tabs';
+import Settings_Button	from '../../containers/settings_button';
+import Tabs				from '../../containers/main_tabs';
 
-import Promo_Participate	from '../../../containers/promo/participate';
+import Promo_View		from '../../containers/promo/view';
 
 const styles = StyleSheet.create({
 	container: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 export default class PromoView extends Component {
 	static navigationOptions = ({navigation}) => ({
-		title: 'Принять участие',
+		title: 'Об акции',
 		headerRight: (<Settings_Button navigation={navigation} style={{color:'#fff'}} />),
 		...light,
 	});
@@ -26,7 +26,7 @@ export default class PromoView extends Component {
 		return (
 			<View style={styles.container}>
 				<StatusBar barStyle="light-content" />
-				<Promo_Participate/>
+				<Promo_View/>
 			</View>
 		);
 	}

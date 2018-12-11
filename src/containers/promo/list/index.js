@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux';
 
-import {list_data,module as promo_module} from '../../../redux/reducers/promo/list';
+import {get_data,module as promo_module} from '../../../redux/reducers/promo/list';
 import Component from './component';
 
 const mapStateToProps = state => ({
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	list_data,
+	get_data,
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Component);

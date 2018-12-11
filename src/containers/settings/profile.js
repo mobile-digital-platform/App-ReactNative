@@ -39,10 +39,12 @@ export default withNavigation(({navigation,...props}) => (
 				<Icon name="user" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Сменить пользователя</Text>
 			</TouchableOpacity>
+			{/*
 			<TouchableOpacity style={styles.list_item} onPress={_=>navigation.push('settings_change_password')}>
 				<Icon name="unlock" style={{color:'red'}} size={40} />
 				<Text style={styles.list_text}>Изменить пароль</Text>
 			</TouchableOpacity>
+			*/}
 		</View>
 	</View>
 ));

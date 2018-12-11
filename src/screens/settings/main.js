@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default class MainList extends Component {
+export default class MainSettings extends Component {
 	static navigationOptions = ({navigation}) => ({
 		title: 'Настройки',
 		...light,

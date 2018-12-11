@@ -36,43 +36,72 @@ export default class Personal extends Component {
 		super(props);
 
 		this.state = {
-			name:		'Марина',
-			name_error:	'',
-			father:		'',
-			family:		'',
-			gender:		1,
-			city:		0,
-			city_name:	'',
-			phone:		'+79174545606',
-			phone_error:'',
-			mail:		'',
-			mail_error:	'',
+			name:			'',
+			name_error:		'',
+			father:			'',
+			family:			'',
+			gender:			1,
+			city_id:		0,
+			city_name:		'',
+			phone:			'',
+			phone_confirmed:true,
+			phone_error:	'',
+			mail:			'',
+			mail_confirmed:	true,
+			mail_error:		'',
 		};
 	}
 
 	componentDidUpdate(prev_props) {
-		if(!Object.is(this.props.state.personal_data,prev_props.state.personal_data)) this.setState({...this.props.state.personal_data});;
+		if(!Object.is(this.props.state.personal_data,prev_props.state.personal_data)) {
+			this.setState(this.props.state.personal_data);
+		}
 	}
 
+	update = async (state_adjust) => {
+		await this.setState(state_adjust);
+		this.props.update_data(this.state);
+	}
 	send = () => {
 		if(!this.state.name.length)			this.setState({name_error:'Введите имя'});
-		else if(!this.state.city)			this.setState({city_error:'Выберите город'});
+		else if(!this.state.city_id)		this.setState({city_error:'Выберите город'});
 		else if(!this.state.phone.length)	this.setState({phone_error:'Введите номер телефона'});
 		else								this.props.send_data(this.state);
 	}
 
 	render() {
 		let state = this.state;
-		console.log(state);
+		// console.log("personal component",state);
 
 		return (
 			<View style={styles.container}>
 				<View style={styles.block}>
 					<Text style={styles.title}>Персональные данные</Text>
-					<Input title="Имя"		value={state.name}		send={value => this.setState({name:value})}	error={state.name_error} />
-					<Input title="Отчество"	value={state.father}	send={value => this.setState({father:value})}	/>
-					<Input title="Фамилия"	value={state.family}	send={value => this.setState({family:value})}	/>
-					<SelectCity value={state.city} name={state.city_name} send={value => this.setState({city:value})} error={state.city_error} />
+					<Input
+						title="Имя"
+						value={state.name}
+						update={value => this.update({name:value})}
+						send={value => this.setState({name:value})}
+						error={state.name_error}
+					/>
+					<Input
+						title="Отчество"
+						value={state.father}
+						update={value => this.update({father:value})}
+						send={value => this.setState({father:value})}
+					/>
+					<Input
+						title="Фамилия"
+						value={state.family}
+						update={value => this.update({family:value})}
+						send={value => this.setState({family:value})}
+					/>
+					<SelectCity
+						value={state.city_id}
+						name={state.city_name}
+						send={value => this.setState({city:value})}
+						error={state.city_error}
+					/>
 				</View>
 				{/*
 				<View style={styles.block}>
@@ -87,10 +116,17 @@ export default class Personal extends Component {
 						value={state.phone}
 						disabled={state.phone_confirmed}
 						need_confirm={state.id && !state.phone_confirmed}
+						update={value => this.update({phone:value})}
 						send={value => this.setState({phone:value})}
 						error={state.phone_error}
 					/>
-					<Input title="E-mail" value={state.mail} send={value => this.setState({mail:value})} error={state.mail_error} />
+					<Input
+						title="E-mail"
+						value={state.mail}
+						update={value => this.update({mail:value})}
+						send={value => this.setState({mail:value})}
+						error={state.mail_error}
+					/>
 				</View>
 				<TouchableOpacity style={styles.save} onPress={this.send}><Text style={styles.save_text}>Сохранить</Text></TouchableOpacity>
 			</View>

@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Platform,StyleSheet,FlatList,Text,TextInput,TouchableOpacity,View} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
-import city_list from '../../../config/city_list';
+import city from '../../../services/city';
 
 const styles = StyleSheet.create({
 	container: {
@@ -30,9 +30,6 @@ const styles = StyleSheet.create({
 	},
 });
 
-find_city	= (id)   => city_list.filter(e => e.id==id)[0].name;
-search_city	= (name) => city_list.filter(e => e.name.substr(0,name.length)==name);
-
 export default withNavigation(class ChangeCity extends Component {
 	state = {
 		city_id: 0,
@@ -41,17 +38,17 @@ export default withNavigation(class ChangeCity extends Component {
 	};
 
 	componentDidMount() {
-		if(this.props.user.city>0) this.setState({city_id:this.props.user.city,city_name:find_city(this.props.user.city)});
+		if(this.props.user.city>0)			this.setState({city_id:this.props.user.city,city_name:city.find_city(this.props.user.city)});
+		else if(this.props.user.city_name)	this.change_text(this.props.user.city_name);
 	}
 
 	change_text = (city_name) => {
 		this.setState({city_name});
-		if(city_name.length>1)	this.setState({suggest:search_city(city_name)});
+		if(city_name.length>1)	this.setState({suggest:city.search_city(city_name.trim())});
 		else					this.setState({suggest:[]});
 	}
 	select = (city_id,city_name) => {
-		this.setState({city_id,city_name});
-		this.props.change_city({id:city_id,name:city_name});
+		this.props.update_user({city_id,city_name});
 		this.props.navigation.goBack();
 	}
 

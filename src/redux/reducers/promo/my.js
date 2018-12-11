@@ -4,9 +4,9 @@ import config	from '../../../config';
 import API		from '../../../services/api';
 
 export const ReducerRecord = () => ({
-	data: false,
+	data: [],
 	error: null,
-	initialed: false,
+	initialized: false,
 	loading: false,
 	loaded: false,
 });

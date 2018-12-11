@@ -50,17 +50,17 @@ export default class Input extends Component {
 
 	componentDidUpdate(prevProps) {
 		if(!Object.is(this.props,prevProps)) {
-			this.setState({
-				active: !!(this.props.value?.length),
-				value: this.props.value ?? '',
+			this.setState(state => ({
+				active: state.active || this.props.value?.length,
+				value: state.value || this.props.value || '',
 				error: this.props.error,
-			});
+			}));
 		}
 	}
 
 	set_value = (value) => {
 		this.setState({value,error:false});
-		this.props.send && this.props.send(value);
+		if(this.props.update) this.props.update(value);
 	}
 
 	set_active = async () => {
@@ -69,10 +69,12 @@ export default class Input extends Component {
 	}
 	reset_active = () => {
 		if(!this.state.value.length) this.setState({active:false});
+		if(this.props.send) this.props.send(this.state.value);
 	}
 
 	render() {
 		let state = this.state;
+
 		return (
 			<View>
 				{state.active ? (
@@ -83,6 +85,7 @@ export default class Input extends Component {
 							style={styles.input}
 							secureTextEntry={this.props.password}
 							value={state.value}
+							keyboardType={this.props.type}
 							onChangeText={this.set_value}
 							onBlur={this.reset_active}
 						/>

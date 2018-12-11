@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 	image: {
 		height: 50, width: 50,
 		borderRadius: 25,
-		backgroundColor: '#ddd',
+		backgroundColor: '#eee',
 	},
 	area: {
 		flex: 1,
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		marginTop: 5,
 	},
 	link_area: {
 		flexDirection: 'row',
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
 });
 
 export default withNavigation(({navigation,data}) => (
-	<TouchableOpacity style={styles.container} onPress={_=>navigation.push('promo_participate')}>
+	<TouchableOpacity style={styles.container} onPress={_=>{return;navigation.push('promo_participate')}}>
 		<Image style={styles.image} source={{src:data.image_url}} />
 		<View style={styles.area}>
 			<Text style={styles.title}>{data.name}</Text>
@@ -59,9 +60,11 @@ export default withNavigation(({navigation,data}) => (
 					<Text style={styles.link}>Сайт акции</Text>
 					<Icon name="chevron-right" style={{color:'red'}} size={30} />
 				</TouchableOpacity>
+				{/*
 				<TouchableOpacity style={styles.participate} onPress={_=>navigation.push('promo_participate')}>
 					<Text style={styles.participate_text}>Участвовать</Text>
 				</TouchableOpacity>
+				*/}
 			</View>
 		</View>
 	</TouchableOpacity>

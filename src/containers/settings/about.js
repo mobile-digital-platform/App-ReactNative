@@ -8,7 +8,7 @@ import config from '../../config';
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 10, paddingHorizontal: 20,
+		padding: 10, paddingHorizontal: 30,
 	},
 	title: {
 		paddingVertical: 15, paddingHorizontal: 10,

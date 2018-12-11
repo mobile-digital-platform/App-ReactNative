@@ -3,4 +3,6 @@ export default {
 	version: '1.0.1',
 	year: '2019',
 	support_number: '8-800-1112233',
+
+	storage_name: 'coca-cola',
 };

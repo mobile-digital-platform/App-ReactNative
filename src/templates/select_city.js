@@ -7,9 +7,10 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
+		justifyContent: 'center',
 		alignItems: 'center',
 		minHeight: 65,
-		marginVertical: 5, paddingHorizontal: 25,
+		marginVertical: 5, paddingLeft: 25, paddingRight: 5,
 		borderWidth: 1, borderColor: '#ccc',
 		borderRadius: 100,
 		backgroundColor: '#fff',
@@ -50,7 +51,7 @@ export default withNavigation(({navigation,...props}) => (
 			{props.value ? (
 				<View>
 					<Text style={styles.title}>Город</Text>
-					<Text style={styles.input}>{props.name}</Text>
+					<Text style={styles.input} numberOfLines={1}>{props.name}</Text>
 				</View>
 			) : (
 				<Text style={[styles.title,styles.title_active]}>Город</Text>
